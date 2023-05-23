@@ -7,17 +7,15 @@ public class MovePlayer : MonoBehaviour
     [SerializeField] private float walkSpeed;
     [SerializeField] private float runSpeed;
     [SerializeField] private float jump;
-    [SerializeField] private float gravity;
+    [SerializeField] private GameObject cameraGameObject;
     
     private Rigidbody rb;
-    private Transform cameraTransform;
-
-    private Vector3 direction;
+    private Vector3 movementForward;
+    private Vector3 sideMovement;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        cameraTransform = GetComponent<Transform>();
     }
 
     private void Update()
@@ -30,34 +28,26 @@ public class MovePlayer : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        // Vector3 cameraForward = Vector3.Scale(cameraTransform.forward, new Vector3(1, 0, 1)).normalized;
-        // Vector3 moveDirection = (cameraForward * verticalInput + cameraTransform.right * horizontalInput).normalized;
-
-        Vector3 movement = new Vector3(horizontalInput, 0.0f, verticalInput);
+        movementForward = new Vector3(cameraGameObject.transform.forward.x, 0, cameraGameObject.transform.forward.z) * verticalInput;
+        sideMovement = cameraGameObject.transform.right * horizontalInput;
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            transform.Translate(cameraTransform.forward * walkSpeed * Time.deltaTime);
+            // Courir vers l'avant ou l'arrière
+            transform.Translate(movementForward * runSpeed * Time.deltaTime);
         }
         else
         {
-            transform.Translate(cameraTransform.forward * walkSpeed * Time.deltaTime);
+            // Marcher vers l'avant ou l'arrière
+            transform.Translate(movementForward * walkSpeed * Time.deltaTime);
         }
+
+        // Déplacer sur le coté 
+        transform.Translate(sideMovement * walkSpeed * Time.deltaTime);
 
         if (Input.GetButtonDown("Jump"))
         {
             rb.AddForce(Vector3.up * jump, ForceMode.Impulse);
         }
-
-        direction.y -= gravity * Time.deltaTime;
-
-        /*
-
-        if (direction.x != 0 || direction.z != 0)
-        {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z)), 0.015f);
-        }
-
-        */
     }
 }

@@ -156,11 +156,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30d91d06a473bad4597d41f428527c82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cc: {fileID: 207528517}
   walkSpeed: 5
   runSpeed: 10
   jump: 6
   gravity: 10
+  Camera: {fileID: 630523011}
 --- !u!143 &207528517
 CharacterController:
   m_ObjectHideFlags: 0
