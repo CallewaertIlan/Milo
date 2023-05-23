@@ -11,7 +11,10 @@ public class MovePlayer : MonoBehaviour
     [SerializeField] private float gravity = 20.0f;
     [SerializeField] private Vector3 direction = Vector3.zero;
 
-
+    private void Start()
+    {
+        cc = GetComponent<CharacterController>();
+    }
     void Update()
     {
         if (Input.GetKey(KeyCode.LeftShift))
