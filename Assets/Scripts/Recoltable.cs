@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class Recoltable : MonoBehaviour
 {
-    [SerializeField] private float timeToCollect;
+    public float timeToCollect;
+    public float progressTimeCollect;
     private bool onCollect;
-    private float progressTimeCollect;
     private float startTimeCollect;
 
 
@@ -20,11 +20,7 @@ public class Recoltable : MonoBehaviour
     void Update()
     {
         if (onCollect)
-        {
             progressTimeCollect = Time.time - startTimeCollect;
-
-            Debug.Log("Time : " + progressTimeCollect + " / " + timeToCollect);
-        }
 
         if (progressTimeCollect >= timeToCollect)
             Take(); 
