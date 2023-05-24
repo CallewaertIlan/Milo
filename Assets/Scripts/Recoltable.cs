@@ -12,12 +12,12 @@ public class Recoltable : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
         onCollect = false;
     }
-    
-    void Update()
+
+    protected void Update()
     {
         if (onCollect)
             progressTimeCollect = Time.time - startTimeCollect;
