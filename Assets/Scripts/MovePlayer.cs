@@ -6,22 +6,14 @@ public class MovePlayer : MonoBehaviour
 {
     [SerializeField] private float walkSpeed;
     [SerializeField] private float runSpeed;
-    [SerializeField] private float jump;
     [SerializeField] private GameObject cameraGameObject;
 
-    private Rigidbody rb;
     private Vector3 movementForward;
     private Vector3 sideMovement;
-
-    private void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
 
     private void Update()
     {
         Move();
-        // cameraGameObject.transform.position = transform.position;
     }
 
     private void Move()
@@ -29,33 +21,29 @@ public class MovePlayer : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        movementForward = new Vector3(cameraGameObject.transform.forward.x, 0, cameraGameObject.transform.forward.z) * verticalInput;
-        sideMovement = cameraGameObject.transform.right * horizontalInput;
+        Vector3 cameraForward = cameraGameObject.transform.forward;
+        cameraForward.y = 0;
+
+        Vector3 cameraRight = cameraGameObject.transform.right;
+
+        movementForward = cameraForward * verticalInput;
+        sideMovement = cameraRight * horizontalInput;
+
+        if (movementForward != Vector3.zero || sideMovement != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(movementForward + sideMovement);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 10f * Time.deltaTime);
+        }
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
             // Courir vers l'avant ou l'arrière
-            transform.Translate(movementForward * runSpeed * Time.deltaTime);
+            transform.Translate((movementForward + sideMovement) * runSpeed * Time.deltaTime, Space.World);
         }
         else
         {
             // Marcher vers l'avant ou l'arrière
-            transform.Translate(movementForward * walkSpeed * Time.deltaTime);
+            transform.Translate((movementForward + sideMovement) * walkSpeed * Time.deltaTime, Space.World);
         }
-
-        // Déplacer sur le coté 
-        transform.Translate(sideMovement * walkSpeed * Time.deltaTime);
-
-        // transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(sideMovement.x, 0, sideMovement.z)), 0.15f);
-
-        if (Input.GetButtonDown("Jump"))
-        {
-            rb.AddForce(Vector3.up * jump, ForceMode.Impulse);
-        }
-
-/*        if (verticalInput != 0 || horizontalInput != 0)
-        {
-            transform.eulerAngles = new Vector3(transform.eulerAngles.x, cameraGameObject.transform.parent.eulerAngles.y, transform.eulerAngles.z);
-        }*/
     }
 }
