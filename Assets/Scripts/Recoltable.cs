@@ -23,7 +23,7 @@ public class Recoltable : MonoBehaviour
             progressTimeCollect = Time.time - startTimeCollect;
 
         if (progressTimeCollect >= timeToCollect)
-            Take(); 
+            Take();
     }
 
     public void OnTake()
