@@ -362,10 +362,9 @@ GameObject:
   - component: {fileID: 1473154235}
   - component: {fileID: 1473154234}
   - component: {fileID: 1473154233}
-  - component: {fileID: 1473154238}
   - component: {fileID: 1473154237}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Mob
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -442,14 +441,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1473154232}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 4.18, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &1473154237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -459,32 +458,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1473154232}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30d91d06a473bad4597d41f428527c82, type: 3}
+  m_Script: {fileID: 11500000, guid: f34a0f5fe9a8cb7489596fbecf6762d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cc: {fileID: 1473154238}
-  walkSpeed: 5
-  runSpeed: 10
-  gravity: 20
-  direction: {x: 0, y: 0, z: 0}
---- !u!143 &1473154238
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1473154232}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  life: 0
+  maxLife: 100
+  mana: 0
+  maxMana: 100
+  timeToGainMaxMana: 9
+  timeBeforeStartGainMana: 3
+  speed: 10
+  damage: 10
 --- !u!1 &1878919983
 GameObject:
   m_ObjectHideFlags: 0
