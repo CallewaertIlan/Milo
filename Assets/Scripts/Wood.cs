@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Rock : Recoltable
+public class Wood : Recoltable
 {
     protected override void Start()
     {
-        type = "Rock";
+        type = "Wood";
         base.Start();
     }
 
