@@ -403,7 +403,7 @@ GameObject:
   - component: {fileID: 156099671}
   - component: {fileID: 156099670}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Number Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -657,7 +657,7 @@ GameObject:
   - component: {fileID: 323178740}
   - component: {fileID: 323178739}
   m_Layer: 5
-  m_Name: Text (Legacy) (2)
+  m_Name: Number Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -942,7 +942,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -14.057869, y: 15.964592}
+  m_AnchoredPosition: {x: -15, y: 15}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &518373078
@@ -1208,7 +1208,7 @@ GameObject:
   - component: {fileID: 675993195}
   - component: {fileID: 675993194}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Inventory Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1231,7 +1231,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -23.2, y: 39.256104}
+  m_AnchoredPosition: {x: -26.3, y: 39.256104}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &675993194
@@ -1701,7 +1701,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 28.812813, y: 15.964592}
+  m_AnchoredPosition: {x: 31, y: 15}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &828857463
@@ -1754,7 +1754,7 @@ GameObject:
   - component: {fileID: 853068370}
   - component: {fileID: 853068369}
   m_Layer: 5
-  m_Name: Text (Legacy) (4)
+  m_Name: Number Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1928,7 +1928,7 @@ GameObject:
   - component: {fileID: 867074463}
   - component: {fileID: 867074462}
   m_Layer: 5
-  m_Name: Text (Legacy) (6)
+  m_Name: Number Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2032,7 +2032,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -35.59778, y: 15.964592}
+  m_AnchoredPosition: {x: -38, y: 15}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &932894742
@@ -2257,7 +2257,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1016446567}
   m_Layer: 5
-  m_Name: images
+  m_Name: Images
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2327,7 +2327,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -14.057869, y: -15.191583}
+  m_AnchoredPosition: {x: -15, y: -20}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1085782067
@@ -2559,7 +2559,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6.9940815, y: -14.754646}
+  m_AnchoredPosition: {x: 8, y: -20}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1223906582
@@ -2983,7 +2983,7 @@ GameObject:
   - component: {fileID: 1411815819}
   - component: {fileID: 1411815818}
   m_Layer: 5
-  m_Name: Text (Legacy) (3)
+  m_Name: Number Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3216,7 +3216,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 28.812813, y: -14.889087}
+  m_AnchoredPosition: {x: 31, y: -20}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1437754122
@@ -3269,7 +3269,7 @@ GameObject:
   - component: {fileID: 1478936332}
   - component: {fileID: 1478936331}
   m_Layer: 5
-  m_Name: Text (Legacy) (5)
+  m_Name: Number Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3373,7 +3373,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6.9940815, y: 15.964592}
+  m_AnchoredPosition: {x: 8, y: 15}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1668211898
@@ -3426,7 +3426,7 @@ GameObject:
   - component: {fileID: 1774704175}
   - component: {fileID: 1774704174}
   m_Layer: 5
-  m_Name: Text (Legacy) (7)
+  m_Name: Number Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4324,7 +4324,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -35.59778, y: -15.393228}
+  m_AnchoredPosition: {x: -38, y: -20}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2005650353
@@ -4467,7 +4467,7 @@ GameObject:
   - component: {fileID: 2108936994}
   - component: {fileID: 2108936993}
   m_Layer: 5
-  m_Name: Text (Legacy) (1)
+  m_Name: Number Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
