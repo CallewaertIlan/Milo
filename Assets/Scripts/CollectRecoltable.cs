@@ -7,13 +7,11 @@ public class CollectRecoltable : MonoBehaviour
     private bool onTrigger;
     private GameObject recoltableTriggered;
 
-    // Start is called before the first frame update
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (onTrigger)
@@ -22,7 +20,14 @@ public class CollectRecoltable : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 recoltable = recoltableTriggered.GetComponentInParent<Recoltable>();
-                recoltable.OnTake();
+                if (!InventoryManager.Instance.HasExceededLimit(recoltable.type, 10))
+                {
+                    recoltable.OnTake();
+                }
+                else
+                {
+                    Debug.Log("Maximum limit for " + recoltable.type);
+                }
             }
         }
     }
