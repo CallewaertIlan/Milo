@@ -4,30 +4,54 @@ using UnityEngine;
 
 public class MovePlayer : MonoBehaviour
 {
-    [SerializeField] private CharacterController cc;
+    [SerializeField] private float walkSpeed;
+    [SerializeField] private float runSpeed;
+    [SerializeField] private GameObject cameraGameObject;
 
-    [SerializeField] private float walkSpeed = 5.0f;
-    [SerializeField] private float runSpeed = 10.0f;
-    [SerializeField] private float gravity = 20.0f;
-    [SerializeField] private Vector3 direction = Vector3.zero;
+    private Vector3 movementForward;
+    private Vector3 sideMovement;
 
+<<<<<<< HEAD
+    private void Update()
+=======
     private void Start()
     {
         cc = GetComponent<CharacterController>();
     }
     void Update()
+>>>>>>> 623f6a46aa92a908b86d7edb60838e583bc9c44a
     {
+        Move();
+    }
+
+    private void Move()
+    {
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+
+        Vector3 cameraForward = cameraGameObject.transform.forward;
+        cameraForward.y = 0;
+
+        Vector3 cameraRight = cameraGameObject.transform.right;
+
+        movementForward = cameraForward * verticalInput;
+        sideMovement = cameraRight * horizontalInput;
+
+        if (movementForward != Vector3.zero || sideMovement != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(movementForward + sideMovement);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 10f * Time.deltaTime);
+        }
+
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            direction = new Vector3(Input.GetAxis("Horizontal") * runSpeed, direction.y, Input.GetAxis("Vertical") * runSpeed);
+            // Courir vers l'avant ou l'arrière
+            transform.Translate((movementForward + sideMovement) * runSpeed * Time.deltaTime, Space.World);
         }
         else
         {
-            direction = new Vector3(Input.GetAxis("Horizontal") * walkSpeed, direction.y, Input.GetAxis("Vertical") * walkSpeed);
+            // Marcher vers l'avant ou l'arrière
+            transform.Translate((movementForward + sideMovement) * walkSpeed * Time.deltaTime, Space.World);
         }
-
-        direction.y -= gravity * Time.deltaTime;
-
-        cc.Move(direction * Time.deltaTime);
     }
 }
