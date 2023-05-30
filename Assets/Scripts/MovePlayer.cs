@@ -11,7 +11,15 @@ public class MovePlayer : MonoBehaviour
     private Vector3 movementForward;
     private Vector3 sideMovement;
 
+<<<<<<< HEAD
     private void Update()
+=======
+    private void Start()
+    {
+        cc = GetComponent<CharacterController>();
+    }
+    void Update()
+>>>>>>> 623f6a46aa92a908b86d7edb60838e583bc9c44a
     {
         Move();
     }
