@@ -5,19 +5,18 @@ using UnityEngine;
 
 public class Recoltable : MonoBehaviour
 {
+    public string type;
     public float timeToCollect;
     public float progressTimeCollect;
     private bool onCollect;
     private float startTimeCollect;
-
-
-    // Start is called before the first frame update
-    protected void Start()
+    
+    protected virtual void Start()
     {
         onCollect = false;
     }
 
-    protected void Update()
+    protected virtual void Update()
     {
         if (onCollect)
             progressTimeCollect = Time.time - startTimeCollect;
@@ -32,8 +31,9 @@ public class Recoltable : MonoBehaviour
         onCollect = true;
     }
     
-    public void Take()
+    public virtual void Take()
     {
+        InventoryManager.Instance.AddToInventory(this);
         gameObject.SetActive(false);
     }
 }
