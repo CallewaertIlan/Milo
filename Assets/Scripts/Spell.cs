@@ -4,46 +4,63 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 public class Spell : MonoBehaviour
-{
+{ 
+    public enum State
+    {
+        Launched,
+        Collided,
+        WasCollided,
+    }
+
     protected Vector3 actionDirection;
 
-    Vector3 scale;
-
-    protected bool wasCollided = false;
+    protected State state;
 
     public float manaCost;
+
+    protected float timeFirstCollision;
 
     // Start is called before the first frame update
     protected void Start()
     {
-        scale = transform.localScale;
+        state = State.Launched;
     }
 
     protected void Update()
     {
-        if (!wasCollided) ActionBeforeTriggering();
-        else Action();
+
     }
 
     protected void ActionBeforeTriggering()
     {
-        transform.Translate(actionDirection * Time.deltaTime * 10);
+        // Action avant la collision
+        Debug.Log("before collision");
     }
 
-    protected void Action()
+    protected void ActionAfterTriggering()
     {
-        transform.localScale = scale * 20;
-        GetComponent<Rigidbody>().isKinematic = true;
-        GetComponent<SphereCollider>().isTrigger = true;
+        // Action apres la collision
+        Debug.Log("after collision");
     }
 
-    public void SetPlayerDirection(Vector3 dir)
+    protected void ActionOnCollision()
+    {
+        // Action au moment de la collision
+        Debug.Log("on collision");
+    }
+
+    public void SetDirection(Vector3 dir)
     {
         actionDirection = dir;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    protected void OnCollisionEnter(Collision collision)
     {
-        wasCollided = true;
+        state = State.Collided;
+    }
+
+    protected void OnCollisionExit(Collision collision)
+    {
+        
     }
 }

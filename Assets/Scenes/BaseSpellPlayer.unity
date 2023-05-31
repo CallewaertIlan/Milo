@@ -702,7 +702,7 @@ MonoBehaviour:
   cc: {fileID: 0}
   walkSpeed: 5
   runSpeed: 10
-  gravity: 20
+  gravity: 0
   direction: {x: 0, y: 0, z: 0}
 --- !u!143 &2005542475
 CharacterController:

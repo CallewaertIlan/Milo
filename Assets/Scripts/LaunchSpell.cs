@@ -28,7 +28,7 @@ public class LaunchSpell : MonoBehaviour
         {
             GameObject spell = Instantiate(spellPrefab, new Vector3(transform.position.x + cameraObject.transform.forward.x, transform.position.y + cameraObject.transform.forward.y, transform.position.z + transform.forward.z), transform.rotation);
             Spell spellScript = spell.GetComponent<Spell>();
-            spellScript.SetPlayerDirection(cameraObject.transform.forward);
+            spellScript.SetDirection(cameraObject.transform.forward);
             entityScript.AddMana(-spellScript.manaCost);
             entityScript.SetTimeLastManaUse(Time.time);
         }

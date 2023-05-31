@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2335694897257785996}
   - component: {fileID: 2335694897257785997}
   - component: {fileID: 2335694897257786098}
-  - component: {fileID: 2335694897257785998}
+  - component: {fileID: 6067257375073601713}
   - component: {fileID: 7277501904915030998}
   m_Layer: 0
   m_Name: SpellExplosionTest
@@ -99,7 +99,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2335694897257785998
+--- !u!114 &6067257375073601713
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,10 +108,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2335694897257786099}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99605c87cbcaf794eba06724f4e49bf7, type: 3}
+  m_Script: {fileID: 11500000, guid: 62d8ece1bbf1ced40b58c5298fb36ca0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   manaCost: 50
+  timeBeforeExplosionAfterCollision: 1
 --- !u!54 &7277501904915030998
 Rigidbody:
   m_ObjectHideFlags: 0
