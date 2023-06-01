@@ -18,6 +18,7 @@ public class OpenInventory : MonoBehaviour
         {
             isOpen = !isOpen;
             canvas.enabled = isOpen;
+            InventoryManager.Instance.UpdateInventory();
         }
     }
 }

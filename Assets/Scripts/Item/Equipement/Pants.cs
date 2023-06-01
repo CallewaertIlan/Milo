@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Helmet : Item
+public class Pants : Equipement
 {
     protected void Start()
     {
-        itemType = Type.HELMET;
+        equipementType = EquipementType.PANTS;
     }
 }

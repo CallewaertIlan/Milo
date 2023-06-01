@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Recoltable : MonoBehaviour
 {
-    public string type;
     public float timeToCollect;
     public float progressTimeCollect;
     private bool onCollect;
@@ -33,7 +32,7 @@ public class Recoltable : MonoBehaviour
     
     public virtual void Take()
     {
-        InventoryManager.Instance.AddToInventory(this);
+        InventoryManager.Instance.AddToInventory(GetComponent<Item>());
         gameObject.SetActive(false);
     }
 }

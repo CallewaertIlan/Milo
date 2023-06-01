@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class InventoryManager : MonoBehaviour
 {
+    [SerializeField] private GameObject inventoryCanva;
+    [SerializeField] private GameObject imagePrefab;
+
     private static InventoryManager _instance;
 
     public static InventoryManager Instance
@@ -12,15 +17,7 @@ public class InventoryManager : MonoBehaviour
         get { return _instance; }
     }
 
-    private Dictionary<string, int> inventory; // Dictionnaire pour stocker les objets de l'inventaire avec leur quantité
-    private Dictionary<string, Text> inventoryTexts; // Dictionnaire pour stocker les textes associés aux objets de l'inventaire
-
-    [SerializeField] private Image[] inventoryImages; // Tableau d'images pour afficher visuellement les objets de l'inventaire
-    [SerializeField] private Text[] inventoryCountTexts; // Tableau de textes pour afficher les quantités des objets de l'inventaire
-
-    [SerializeField] private Sprite woodSprite; // Sprite pour l'objet "Wood"
-    [SerializeField] private Sprite stoneSprite; // Sprite pour l'objet "Stone"
-    [SerializeField] private Sprite ironSprite; // Sprite pour l'objet "Iron"
+    [SerializeField] private Dictionary<Item, int> inventory; // Dictionnaire pour stocker les objets de l'inventaire avec leur quantité
 
     private void Awake()
     {
@@ -33,117 +30,99 @@ public class InventoryManager : MonoBehaviour
             Destroy(this);
         }
 
-        inventory = new Dictionary<string, int>(); // Initialise le dictionnaire d'inventaire
-        inventoryTexts = new Dictionary<string, Text>(); // Initialise le dictionnaire de textes
-
-        // Associe chaque image de l'inventaire à son texte correspondant dans les dictionnaires
-        for (int i = 0; i < inventoryImages.Length; i++)
-        {
-            inventoryTexts[inventoryImages[i].gameObject.name] = inventoryCountTexts[i];
-        }
-    }
-
-    // Vérifie si la quantité d'un type d'objet dans l'inventaire a dépassé la limite spécifiée
-    public bool HasExceededLimit(string itemType, int limit)
-    {
-        if (inventory.ContainsKey(itemType))
-        {
-            return inventory[itemType] >= limit;
-        }
-
-        return false;
-    }
-
-    // Renvoie l'indice de la première case vide dans l'inventaire
-    private int GetEmptyInventorySlotIndex()
-    {
-        for (int i = 0; i < inventoryImages.Length; i++)
-        {
-            if (inventoryImages[i].sprite == null)
-            {
-                return i;
-            }
-        }
-
-        return -1;
+        inventory = new Dictionary<Item, int>(); // Initialise le dictionnaire d'inventaire
     }
 
     // Crée un nouvel objet dans l'inventaire avec le sprite correspondant au type d'objet
-    private void CreateInventoryItem(string itemType)
+    private void CreateInventoryItem(Item item)
     {
-        int emptySlotIndex = GetEmptyInventorySlotIndex();
-
-        if (emptySlotIndex != -1)
-        {
-            Image inventoryImage = inventoryImages[emptySlotIndex];
-
-            // Associe le sprite approprié en fonction du type d'objet
-            switch (itemType)
-            {
-                case "Wood":
-                    inventoryImage.sprite = woodSprite;
-                    break;
-                case "Stone":
-                    inventoryImage.sprite = stoneSprite;
-                    break;
-                case "Iron":
-                    inventoryImage.sprite = ironSprite;
-                    break;
-            }
-
-            Text inventoryText = inventoryTexts[inventoryImage.gameObject.name];
-            inventoryText.text = "1";
-            inventoryText.gameObject.SetActive(true);
-        }
+        inventory.Add(item, 1);
     }
 
-    // Renvoie l'indice dans l'inventaire de l'objet correspondant au type d'objet spécifié
-    private int GetInventoryIndexByItemType(string itemType)
+    private Item IsOnInventory(Item item)
     {
-        for (int i = 0; i < inventoryImages.Length; i++)
+        foreach (KeyValuePair<Item, int> kv in inventory)
         {
-            if (inventoryImages[i].sprite != null)
-            {
-                string spriteName = inventoryImages[i].sprite.name;
-
-                // Vérifie si le nom du sprite contient le type d'objet spécifié
-                if (spriteName.Contains(itemType))
-                {
-                    return i;
-                }
-            }
+            Debug.Log(kv.Key.GetComponent<Item>().GetName());
+            Debug.Log(item.GetComponent<Item>().GetName());
+            if (kv.Key.GetComponent<Item>().GetName() == item.GetComponent<Item>().GetName()) return kv.Key;
         }
-
-        return -1;
-    }
-
-    // Met à jour le nombre d'objets affichés dans l'inventaire pour le type d'objet spécifié
-    private void UpdateInventoryCount(string itemType)
-    {
-        int inventoryIndex = GetInventoryIndexByItemType(itemType);
-
-        if (inventoryIndex != -1)
-        {
-            Text inventoryText = inventoryTexts[inventoryImages[inventoryIndex].gameObject.name];
-            inventoryText.text = inventory[itemType].ToString();
-        }
+        return null;
     }
 
     // Ajoute un objet à l'inventaire
-    public void AddToInventory(Recoltable item)
+    public void AddToInventory(Item item)
     {
-        string itemType = item.type;
-
-        if (inventory.ContainsKey(itemType))
-        {
-            inventory[itemType]++;
-        }
-        else
-        {
-            inventory[itemType] = 1;
-            CreateInventoryItem(itemType);
-        }
-
-        UpdateInventoryCount(itemType);
+        Item itemInventory = IsOnInventory(item);
+        if (itemInventory != null) inventory[itemInventory] += 1;
+        else CreateInventoryItem(item);
     }
+
+    public void UpdateInventory()
+    {
+        ClearCanva();
+
+        int x = 0;
+        int y = 0;
+
+        foreach (KeyValuePair<Item, int> element in inventory)
+        {
+            GameObject img = GameObject.Instantiate(imagePrefab);
+            img.transform.parent = inventoryCanva.transform;
+
+            img.transform.localPosition = new Vector3(-35 + (x * 23), 10 - (y * 30), 0);
+            img.transform.localScale = new Vector3(0.1933434f, 0.2796595f, 0.5140421f);
+
+            img.GetComponent<Image>().sprite = element.Key.inventoryImage;
+            img.GetComponentInChildren<Text>().text = element.Value.ToString();
+
+            x++;
+            if (x % 4 == 0)
+            {
+                y++;
+                x = 0;
+            }
+        }
+    }
+
+    private void ClearCanva()
+    {
+        Transform parentTransform = inventoryCanva.transform;
+
+        // Loop through each child of the parent GameObject
+        for (int i = parentTransform.childCount - 1; i >= 0; i--)
+        {
+            // Get the child GameObject
+            GameObject childObject = parentTransform.GetChild(i).gameObject;
+
+            // Destroy the child GameObject if he has the good Layer
+            if (childObject.tag != "Text") Destroy(childObject);
+        }
+    }
+
+
+
+
+    // Vérifie si la quantité d'un type d'objet dans l'inventaire a dépassé la limite spécifiée
+    /*    public bool HasExceededLimit(string itemType, int limit)
+        {
+            if (inventory.ContainsKey(itemType))
+            {
+                return inventory[itemType] >= limit;
+            }
+
+            return false;
+        }*/
+
+    /*    // Met à jour le nombre d'objets affichés dans l'inventaire pour le type d'objet spécifié
+        private void UpdateInventoryCount(string itemType)
+        {
+            int inventoryIndex = GetInventoryIndexByItemType(itemType);
+
+            if (inventoryIndex != -1)
+            {
+                Text inventoryText = inventoryTexts[inventoryImages[inventoryIndex].gameObject.name];
+                inventoryText.text = inventory[itemType].ToString();
+            }
+        }*/
 }

@@ -20,15 +20,16 @@ public class CollectRecoltable : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E) && recoltableTriggered != null)
             {
                 recoltable = recoltableTriggered.GetComponentInParent<Recoltable>();
-                if (!InventoryManager.Instance.HasExceededLimit(recoltable.type, 10))
-                {
-                    recoltable.OnTake();
-                    recoltableTriggered = null;
-                }
+
+/*                if (!InventoryManager.Instance.HasExceededLimit(recoltable.type.ToString(), 10))
+                {*/
+                recoltable.OnTake();
+                recoltableTriggered = null;
+/*                }
                 else
                 {
                     Debug.Log("Maximum limit for " + recoltable.type);
-                }
+                }*/
             }
         }
     }
