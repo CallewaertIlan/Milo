@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MovePlayer : MonoBehaviour
@@ -7,9 +5,16 @@ public class MovePlayer : MonoBehaviour
     [SerializeField] private float walkSpeed;
     [SerializeField] private float runSpeed;
     [SerializeField] private GameObject cameraGameObject;
+    
+    private CollectBar collectBar;
 
     private Vector3 movementForward;
     private Vector3 sideMovement;
+
+    void Start()
+    {
+        collectBar = FindObjectOfType<CollectBar>();
+    }
 
     void Update()
     {
@@ -33,6 +38,11 @@ public class MovePlayer : MonoBehaviour
         {
             Quaternion targetRotation = Quaternion.LookRotation(movementForward + sideMovement);
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 10f * Time.deltaTime);
+            collectBar.PlayerIsMoving(true);
+        }
+        else
+        {
+            collectBar.PlayerIsMoving(false);
         }
 
         if (Input.GetKey(KeyCode.LeftShift))
@@ -44,6 +54,18 @@ public class MovePlayer : MonoBehaviour
         {
             // Marcher vers l'avant ou l'arrière
             transform.Translate((movementForward + sideMovement) * walkSpeed * Time.deltaTime, Space.World);
+        }
+    }
+
+    public bool IsMoving()
+    {
+        if (movementForward != Vector3.zero || sideMovement != Vector3.zero)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }

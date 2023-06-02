@@ -6,10 +6,11 @@ public class CollectRecoltable : MonoBehaviour
 {
     private bool onTrigger;
     private GameObject recoltableTriggered;
+    private CollectBar collectBar;
 
     void Start()
     {
-        
+        collectBar = FindObjectOfType<CollectBar>();
     }
 
     void Update()
@@ -19,15 +20,18 @@ public class CollectRecoltable : MonoBehaviour
             Recoltable recoltable = null;
             if (Input.GetKeyDown(KeyCode.E) && recoltableTriggered != null)
             {
-                recoltable = recoltableTriggered.GetComponentInParent<Recoltable>();
-                if (!InventoryManager.Instance.HasExceededLimit(recoltable.type, 10))
+                if (!collectBar.IsMoving())
                 {
-                    recoltable.OnTake();
-                    recoltableTriggered = null;
-                }
-                else
-                {
-                    Debug.Log("Maximum limit for " + recoltable.type);
+                    recoltable = recoltableTriggered.GetComponentInParent<Recoltable>();
+                    if (!InventoryManager.Instance.HasExceededLimit(recoltable.type, 10))
+                    {
+                        recoltable.OnTake();
+                        recoltableTriggered = null;
+                    }
+                    else
+                    {
+                        Debug.Log("Maximum limit for " + recoltable.type);
+                    }
                 }
             }
         }
