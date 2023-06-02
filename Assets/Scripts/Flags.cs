@@ -6,6 +6,10 @@ public class Flags : MonoBehaviour
 {
     private static Flags instance;
 
+    public bool blacksmithInteraction;
+    public bool mageInteraction;
+    public bool MerchandInteraction;
+    public bool npcInteraction;
 
 
     public static Flags Instance

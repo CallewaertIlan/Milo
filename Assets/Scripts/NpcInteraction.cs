@@ -5,9 +5,7 @@ using UnityEngine.UIElements;
 
 public class NpcInteraction : MonoBehaviour
 {
-    [SerializeField] GameObject raycastObject;
-    [SerializeField] IPanel 
-    // Start is called before the first frame update
+    [SerializeField] GameObject raycastObject;    // Start is called before the first frame update
     void Start()
     {
         
