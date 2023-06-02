@@ -10,7 +10,6 @@ public class MovePlayer : MonoBehaviour
     [SerializeField] private float runSpeed = 10.0f;
     [SerializeField] private float gravity = 20.0f;
     [SerializeField] private Vector3 direction = Vector3.zero;
-
     private void Start()
     {
         cc = GetComponent<CharacterController>();
