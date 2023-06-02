@@ -43,8 +43,6 @@ public class InventoryManager : MonoBehaviour
     {
         foreach (KeyValuePair<Item, int> kv in inventory)
         {
-            Debug.Log(kv.Key.GetComponent<Item>().GetName());
-            Debug.Log(item.GetComponent<Item>().GetName());
             if (kv.Key.GetComponent<Item>().GetName() == item.GetComponent<Item>().GetName()) return kv.Key;
         }
         return null;
@@ -68,7 +66,7 @@ public class InventoryManager : MonoBehaviour
         foreach (KeyValuePair<Item, int> element in inventory)
         {
             GameObject img = GameObject.Instantiate(imagePrefab);
-            img.transform.parent = inventoryCanva.transform;
+            img.transform.SetParent(inventoryCanva.transform, true);
 
             img.transform.localPosition = new Vector3(-35 + (x * 23), 10 - (y * 30), 0);
             img.transform.localScale = new Vector3(0.1933434f, 0.2796595f, 0.5140421f);
