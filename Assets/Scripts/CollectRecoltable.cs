@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CollectRecoltable : MonoBehaviour
 {
+    [SerializeField] GameObject player;
     private bool onTrigger;
     private GameObject recoltableTriggered;
     private CollectBar collectBar;
@@ -15,22 +16,18 @@ public class CollectRecoltable : MonoBehaviour
 
     void Update()
     {
-        if (onTrigger)
+        if (onTrigger && Input.GetKeyDown(KeyCode.E) && recoltableTriggered != null)
         {
-            Recoltable recoltable = null;
-            if (Input.GetKeyDown(KeyCode.E) && recoltableTriggered != null)
+            RaycastHit hit;
+            if (Physics.Raycast(player.transform.position, player.transform.TransformDirection(Vector3.forward), out hit, LayerMask.GetMask("Recoltable")))
             {
-                if (!collectBar.IsMoving())
+                Recoltable recoltable = hit.collider.GetComponent<Recoltable>();
+                if (recoltable != null)
                 {
-                    recoltable = recoltableTriggered.GetComponentInParent<Recoltable>();
-                    if (!InventoryManager.Instance.HasExceededLimit(recoltable.type, 10))
+                    if (!collectBar.IsMoving())
                     {
                         recoltable.OnTake();
                         recoltableTriggered = null;
-                    }
-                    else
-                    {
-                        Debug.Log("Maximum limit for " + recoltable.type);
                     }
                 }
             }
