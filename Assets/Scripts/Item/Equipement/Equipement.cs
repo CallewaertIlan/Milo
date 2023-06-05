@@ -13,7 +13,7 @@ public class Equipement : Item
         BOOTS,
     }
 
-    protected EquipementType equipementType;
+    public EquipementType equipementType;
 
     [SerializeField] protected float damage;
     [SerializeField] protected float health;

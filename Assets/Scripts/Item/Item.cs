@@ -14,7 +14,7 @@ public class Item : MonoBehaviour
     public Sprite inventoryImage;
     public string itemName;
 
-    [SerializeField] protected ItemType itemType;
+    [HideInInspector] public ItemType itemType;
 
     public string GetName()
     {

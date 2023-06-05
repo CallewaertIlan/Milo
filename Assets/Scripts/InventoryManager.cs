@@ -8,6 +8,7 @@ public class InventoryManager : MonoBehaviour
 {
     [SerializeField] private GameObject inventoryCanva;
     [SerializeField] private GameObject imagePrefab;
+    [SerializeField] private GameObject linePrefab;
 
     private static InventoryManager _instance;
 
@@ -17,6 +18,7 @@ public class InventoryManager : MonoBehaviour
     }
 
     [SerializeField] private Dictionary<Item, int> inventory; // Dictionnaire pour stocker les objets de l'inventaire avec leur quantité
+    [SerializeField] private Equipement[] equipements; // Dictionnaire pour stocker les objets de l'inventaire avec leur quantité
 
     private void Awake()
     {
@@ -30,6 +32,7 @@ public class InventoryManager : MonoBehaviour
         }
 
         inventory = new Dictionary<Item, int>(); // Initialise le dictionnaire d'inventaire
+        equipements = new Equipement[5];
     }
 
     // Crée un nouvel objet dans l'inventaire avec le sprite correspondant au type d'objet
@@ -52,7 +55,12 @@ public class InventoryManager : MonoBehaviour
     {
         Item itemInventory = IsOnInventory(item);
         if (itemInventory != null) inventory[itemInventory] += 1;
-        else CreateInventoryItem(item);
+        else
+        {
+            CreateInventoryItem(item);
+/*            if (itemInventory.itemType == Item.ItemType.EQUIPEMENT) ;
+            else CreateInventoryItem(item);*/
+        }
     }
 
     public void UpdateInventory()
@@ -62,23 +70,29 @@ public class InventoryManager : MonoBehaviour
         int x = 0;
         int y = 0;
 
+        GameObject line = GameObject.Instantiate(linePrefab);
+        line.transform.SetParent(inventoryCanva.transform, false);
+
         foreach (KeyValuePair<Item, int> element in inventory)
         {
             GameObject img = GameObject.Instantiate(imagePrefab);
-            img.transform.SetParent(inventoryCanva.transform, true);
-
-            img.transform.localPosition = new Vector3(-35 + (x * 23), 10 - (y * 30), 0);
+            img.transform.SetParent(line.transform, true);
             img.transform.localScale = new Vector3(0.1933434f, 0.2796595f, 0.5140421f);
 
             img.GetComponent<Image>().sprite = element.Key.inventoryImage;
             img.GetComponentInChildren<Text>().text = element.Value.ToString();
 
             x++;
-            if (x % 4 == 0)
+            if (x % 10 == 0)
             {
                 y++;
                 x = 0;
+
+                line = GameObject.Instantiate(linePrefab);
+                line.transform.SetParent(inventoryCanva.transform, false);
             }
+
+            if (y == 7) return;
         }
     }
 
@@ -93,11 +107,14 @@ public class InventoryManager : MonoBehaviour
             GameObject childObject = parentTransform.GetChild(i).gameObject;
 
             // Destroy the child GameObject if he has the good Layer
-            if (childObject.tag != "Text") Destroy(childObject);
+            if (childObject.tag == "InventoryImage") Destroy(childObject);
         }
     }
 
-
+    private void Equip(Equipement equipement, int equipementInt)
+    {
+        if (equipements[equipementInt] == null) equipements[equipementInt] = equipement;
+    }
 
 
     // Vérifie si la quantité d'un type d'objet dans l'inventaire a dépassé la limite spécifiée
