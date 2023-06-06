@@ -1,33 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class ItemSlot : MonoBehaviour, IDropHandler
 {
-    private Image slotImg;
 
     [SerializeField] private Equipement.EquipementType slotIndex;
 
-
-    private void Awake()
-    {
-        slotImg = GetComponent<Image>();
-    }
-
     public void OnDrop(PointerEventData eventData)
     {
-        Debug.Log("zsdszdzdz");
+
         InventoryItem ii = eventData.pointerDrag.GetComponent<InventoryItem>();
         Equipement equipementItem = eventData.pointerDrag.GetComponent<Equipement>();
 
         Debug.Log(equipementItem);
         Debug.Log(eventData.pointerDrag.name);
 
-        if (slotImg != null || ii != null)
+        if (ii != null)
         {
-            ii.isOnImage = true;
+            ii.isOnImage = false;
 
             ii.transform.SetParent(transform, true);
 
@@ -36,8 +26,9 @@ public class ItemSlot : MonoBehaviour, IDropHandler
             ii.transform.localScale = new Vector3(1, ii.transform.localScale.y, 1);
 
             if (equipementItem != null)
-                if (!EquipItem(equipementItem))
-                    ii.isOnImage = false;
+                ii.isOnImage = EquipItem(equipementItem);
+
+            Debug.Log(EquipItem(equipementItem));
         }
 
     }

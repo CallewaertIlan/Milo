@@ -29,7 +29,13 @@ public class InventoryItem : MonoBehaviour,
         {
             initialPos = transform.localPosition;
             baseParent = transform.parent;
-            transform.SetParent(canvas.transform, true);
+            Quaternion initialRotation = transform.rotation;
+            Vector3 initialScale = transform.lossyScale;
+            transform.SetParent(canvas.transform, false);
+            transform.rotation = initialRotation;
+            transform.position = initialPos;
+            transform.localScale = initialScale;
+            transform.SetAsLastSibling();
             rectTransform.SetAsLastSibling();
             isOnImage = false;
         }
