@@ -7,6 +7,10 @@ using UnityEngine.UI;
 public class NPC : MonoBehaviour
 {
     [SerializeField] Text interactionText;
+
+    public enum NpcType { Classic, Blacksmith, Mage, Merchand };
+    
+    NpcType type;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,11 +20,12 @@ public class NPC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    void InteractionBehaviour() 
+    void InteractionBehaviour()
     {
 
     }
+
 }
