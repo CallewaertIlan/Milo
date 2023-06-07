@@ -2096,7 +2096,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotIndex: 1
-  isAnEquipementSlot: 1
 --- !u!1 &817982705
 GameObject:
   m_ObjectHideFlags: 0
@@ -2255,7 +2254,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotIndex: 4
-  isAnEquipementSlot: 1
 --- !u!1 &877979722
 GameObject:
   m_ObjectHideFlags: 0
@@ -2522,11 +2520,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 993761403}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67422880896986c438f213bdabac3362, type: 3}
+  m_Script: {fileID: 11500000, guid: acf14d1f9636a7f42b79d77f89f7ad70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotIndex: 0
-  isAnEquipementSlot: 0
 --- !u!1 &1045510183
 GameObject:
   m_ObjectHideFlags: 0
@@ -2817,7 +2813,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotIndex: 2
-  isAnEquipementSlot: 1
 --- !u!1 &1251980470
 GameObject:
   m_ObjectHideFlags: 0
@@ -3610,7 +3605,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotIndex: 3
-  isAnEquipementSlot: 1
 --- !u!1 &1453454940
 GameObject:
   m_ObjectHideFlags: 0
@@ -4911,7 +4905,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotIndex: 0
-  isAnEquipementSlot: 1
 --- !u!114 &2145467761094893476
 MonoBehaviour:
   m_ObjectHideFlags: 0
