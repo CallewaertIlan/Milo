@@ -11,7 +11,7 @@ public class Ressources : Item
         STONE,
     }
 
-    protected RessourcesType ressourcesType;
+    public RessourcesType ressourcesType;
 
     // Start is called before the first frame update
     void Awake()

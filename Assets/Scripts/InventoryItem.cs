@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -14,13 +15,11 @@ public class InventoryItem : MonoBehaviour,
     public bool isOnImage;
 
     private Transform baseParent;
-    [SerializeField] private Canvas canvas;
 
 
     private void Start()
     {
         rectTransform = GetComponent<RectTransform>();
-        canvas = FindHighestParent(transform).GetComponent<Canvas>();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -29,14 +28,9 @@ public class InventoryItem : MonoBehaviour,
         {
             initialPos = transform.localPosition;
             baseParent = transform.parent;
-            Quaternion initialRotation = transform.rotation;
-            Vector3 initialScale = transform.lossyScale;
-            transform.SetParent(canvas.transform, false);
-            transform.rotation = initialRotation;
-            transform.position = initialPos;
-            transform.localScale = initialScale;
-            transform.SetAsLastSibling();
-            rectTransform.SetAsLastSibling();
+
+            transform.SetParent(FindHighestParent(transform), true);
+            transform.SetAsFirstSibling();
             isOnImage = false;
         }
     }

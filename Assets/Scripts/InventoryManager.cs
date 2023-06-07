@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,7 +18,8 @@ public class InventoryManager : MonoBehaviour
         get { return _instance; }
     }
 
-    [SerializeField] private Dictionary<Item, int> inventory; // Dictionnaire pour stocker les objets de l'inventaire avec leur quantité
+    [SerializeField] private Dictionary<Ressources, int> inventoryRessources; // Dictionnaire pour stocker les objets de l'inventaire avec leur quantité
+    [SerializeField] private Dictionary<Equipement, int> inventoryEquipement; // Dictionnaire pour stocker les objets de l'inventaire avec leur quantité
     [SerializeField] private Equipement[] equipements; // Dictionnaire pour stocker les objets de l'inventaire avec leur quantité
 
     private void Awake()
@@ -31,36 +33,59 @@ public class InventoryManager : MonoBehaviour
             Destroy(this);
         }
 
-        inventory = new Dictionary<Item, int>(); // Initialise le dictionnaire d'inventaire
+        inventoryRessources = new Dictionary<Ressources, int>(); // Initialise le dictionnaire d'inventaire
+        inventoryEquipement = new Dictionary<Equipement, int>(); // Initialise le dictionnaire d'inventaire
+
         equipements = new Equipement[5];
     }
 
     // Crée un nouvel objet dans l'inventaire avec le sprite correspondant au type d'objet
-    private void CreateInventoryItem(Item item)
+    private void CreateInventoryItem(Ressources item)
     {
-        inventory.Add(item, 1);
+        inventoryRessources.Add(item, 1);
     }
 
-    private Item IsOnInventory(Item item)
+    // Crée un nouvel objet dans l'inventaire avec le sprite correspondant au type d'objet
+    private void CreateInventoryItem(Equipement item)
     {
-        foreach (KeyValuePair<Item, int> kv in inventory)
+        inventoryEquipement.Add(item, 1);
+    }
+
+    private Ressources IsOnInventory(Ressources item)
+    {
+        foreach (KeyValuePair<Ressources, int> kv in inventoryRessources)
         {
-            if (kv.Key.GetComponent<Item>().GetName() == item.GetComponent<Item>().GetName()) return kv.Key;
+            if (kv.Key.ressourcesType == item.GetComponent<Ressources>().ressourcesType) return kv.Key;
         }
         return null;
     }
 
-    // Ajoute un objet à l'inventaire
-    public void AddToInventory(Item item)
+    private Equipement IsOnInventory(Equipement item)
     {
-        Item itemInventory = IsOnInventory(item);
-        if (itemInventory != null) inventory[itemInventory] += 1;
+        foreach (KeyValuePair<Equipement, int> kv in inventoryEquipement)
+        {
+            if (kv.Key.equipementType == item.GetComponent<Equipement>().equipementType) return kv.Key;
+        }
+        return null;
+    }
+
+    // Ajoute un objet ressource à l'inventaire
+    public void AddToInventory(Ressources item)
+    {
+        Ressources itemInventory = IsOnInventory(item);
+        if (itemInventory != null) inventoryRessources[itemInventory] += 1;
         else
         {
             CreateInventoryItem(item);
-/*            if (itemInventory.itemType == Item.ItemType.EQUIPEMENT) ;
-            else CreateInventoryItem(item);*/
+            /*            if (itemInventory.itemType == Item.ItemType.EQUIPEMENT) ;
+                        else CreateInventoryItem(item);*/
         }
+    }
+
+    // Ajoute un équipement à l'inventaire
+    public void AddToInventory(Equipement item)
+    {
+        CreateInventoryItem(item);
     }
 
     public void UpdateInventory()
@@ -73,7 +98,7 @@ public class InventoryManager : MonoBehaviour
         GameObject line = GameObject.Instantiate(linePrefab);
         line.transform.SetParent(inventoryCanva.transform, false);
 
-        foreach (KeyValuePair<Item, int> element in inventory)
+        foreach (KeyValuePair<Ressources, int> element in inventoryRessources)
         {
             GameObject img = GameObject.Instantiate(imagePrefab);
             img.transform.SetParent(line.transform, true);
@@ -94,6 +119,40 @@ public class InventoryManager : MonoBehaviour
 
             if (y == 7) return;
         }
+
+        foreach (KeyValuePair<Equipement, int> element in inventoryEquipement)
+        {
+            GameObject img = GameObject.Instantiate(imagePrefab);
+            img.transform.SetParent(line.transform, true);
+            img.transform.localScale = new Vector3(0.1933434f, 0.2796595f, 0.5140421f);
+
+            img.GetComponent<Image>().sprite = element.Key.inventoryImage;
+            img.GetComponentInChildren<Text>().text = "";
+
+            UnityEngine.Component component = img.AddComponent(element.Key.GetType());
+
+            var fields = element.Key.GetType().GetFields();
+
+            // Copy the values from sourceComponent to targetComponent
+            foreach (var field in fields)
+            {
+                var value = field.GetValue(element.Key);
+                field.SetValue(component, value);
+            }
+
+            x++;
+            if (x % 10 == 0)
+            {
+                y++;
+                x = 0;
+
+                line = GameObject.Instantiate(linePrefab);
+                line.transform.SetParent(inventoryCanva.transform, false);
+            }
+
+            if (y == 7) return;
+        }
+
     }
 
     private void ClearCanva()
@@ -111,11 +170,68 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    private void Equip(Equipement equipement, int equipementInt)
+    public void Equip(Equipement equipement, int equipementInt)
     {
-        if (equipements[equipementInt] == null) equipements[equipementInt] = equipement;
+        equipements[equipementInt] = equipement;
+        Remove(equipement);
     }
 
+    public bool EquipementIsEmpty(Equipement equipement, int equipementInt)
+    {
+        if (equipements[equipementInt] == null)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public void Remove(Ressources item)
+    {
+        foreach (KeyValuePair<Ressources, int> element in inventoryRessources)
+        {
+            Ressources itemInventory = IsOnInventory(item);
+
+            if (itemInventory != null && element.Value <= 0)
+            {
+                inventoryRessources.Remove(itemInventory);
+                return;
+            }
+            else if (itemInventory != null)
+            {
+                inventoryRessources[itemInventory] -= 1;
+            }
+        }
+    }
+
+    public void Remove(Equipement item)
+    {
+        foreach (KeyValuePair<Equipement, int> element in inventoryEquipement)
+        {
+            Equipement itemInventory = IsOnInventory(item);
+
+            if (itemInventory != null)
+            {
+                inventoryEquipement.Remove(itemInventory);
+                return;
+            }
+        }
+    }
+
+    public bool UnEquip(Equipement item)
+    {
+        int count = 0;
+        foreach (Equipement equipement in equipements)
+        {
+            if (equipement == item)
+            {
+                equipements[count] = null;
+                return true;
+            }
+            count++;
+        }
+        return false;
+    }
 
     // Vérifie si la quantité d'un type d'objet dans l'inventaire a dépassé la limite spécifiée
     /*    public bool HasExceededLimit(string itemType, int limit)

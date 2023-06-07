@@ -15,9 +15,9 @@ public class Equipement : Item
 
     public EquipementType equipementType;
 
-    [SerializeField] protected float damage;
-    [SerializeField] protected float health;
-    [SerializeField] protected float mana;
+    public float damage;
+    public float health;
+    public float mana;
 
 
     // Start is called before the first frame update

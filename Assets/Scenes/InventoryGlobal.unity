@@ -266,6 +266,7 @@ MonoBehaviour:
   inventoryImage: {fileID: 21300000, guid: e57ce230af45e4a4b8d877171b339329, type: 3}
   itemName: Iron
   itemType: 0
+  ressourcesType: 0
 --- !u!114 &126889403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -810,6 +811,86 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &243823894
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 243823895}
+  - component: {fileID: 243823897}
+  - component: {fileID: 243823896}
+  m_Layer: 5
+  m_Name: Throw Text
+  m_TagString: Text
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &243823895
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243823894}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.23236157, y: 0.33609688, z: 0.6177797}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 797050386}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &243823896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243823894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 20
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Throw
+--- !u!222 &243823897
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243823894}
+  m_CullTransparentMesh: 1
 --- !u!1 &249474365
 GameObject:
   m_ObjectHideFlags: 0
@@ -863,6 +944,7 @@ MonoBehaviour:
   inventoryImage: {fileID: 21300000, guid: 6b03d724ad58fb64783612e033002fd4, type: 3}
   itemName: Stone
   itemType: 0
+  ressourcesType: 0
 --- !u!114 &249474368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1007,6 +1089,7 @@ MonoBehaviour:
   inventoryImage: {fileID: 21300000, guid: e57ce230af45e4a4b8d877171b339329, type: 3}
   itemName: Iron
   itemType: 0
+  ressourcesType: 0
 --- !u!114 &251225954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1242,6 +1325,7 @@ MonoBehaviour:
   inventoryImage: {fileID: 21300000, guid: e57ce230af45e4a4b8d877171b339329, type: 3}
   itemName: Iron
   itemType: 0
+  ressourcesType: 0
 --- !u!1 &271029391
 GameObject:
   m_ObjectHideFlags: 0
@@ -1480,6 +1564,7 @@ RectTransform:
   - {fileID: 1540776184}
   - {fileID: 993761404}
   - {fileID: 1373107396}
+  - {fileID: 797050386}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1712,7 +1797,7 @@ MonoBehaviour:
   inventoryImage: {fileID: 21300000, guid: feda2e3938a190e469e779cb7ad221c5, type: 3}
   itemName: Helmet de ouf
   itemType: 0
-  equipementType: 0
+  equipementType: 1
   damage: 0
   health: 0
   mana: 100
@@ -1881,6 +1966,123 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 511662601}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &797050385
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 797050386}
+  - component: {fileID: 797050389}
+  - component: {fileID: 797050388}
+  - component: {fileID: 797050387}
+  - component: {fileID: 797050390}
+  m_Layer: 5
+  m_Name: Throw
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &797050386
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797050385}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 4.303638, y: 2.9753325, z: 1.6187}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 243823895}
+  m_Father: {fileID: 432398088}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -805, y: 0}
+  m_SizeDelta: {x: 50, y: 300}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &797050387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797050385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 10
+    m_Bottom: 0
+  m_ChildAlignment: 4
+  m_Spacing: 10
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 1
+  m_ChildScaleHeight: 1
+  m_ReverseArrangement: 0
+--- !u!114 &797050388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797050385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &797050389
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797050385}
+  m_CullTransparentMesh: 1
+--- !u!114 &797050390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797050385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14936abcdb298bf4bb476055fd97a3ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &812076447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1894,6 +2096,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotIndex: 1
+  isAnEquipementSlot: 1
 --- !u!1 &817982705
 GameObject:
   m_ObjectHideFlags: 0
@@ -1947,6 +2150,7 @@ MonoBehaviour:
   inventoryImage: {fileID: 21300000, guid: 2b2d334d6917fb74a8278a1716ccfff3, type: 3}
   itemName: Wood
   itemType: 0
+  ressourcesType: 0
 --- !u!114 &817982708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2051,6 +2255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotIndex: 4
+  isAnEquipementSlot: 1
 --- !u!1 &877979722
 GameObject:
   m_ObjectHideFlags: 0
@@ -2199,8 +2404,9 @@ GameObject:
   - component: {fileID: 993761404}
   - component: {fileID: 993761407}
   - component: {fileID: 993761406}
-  - component: {fileID: 993761405}
   - component: {fileID: 993761408}
+  - component: {fileID: 993761405}
+  - component: {fileID: 993761409}
   m_Layer: 5
   m_Name: Inventory
   m_TagString: Untagged
@@ -2307,6 +2513,20 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &993761409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993761403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67422880896986c438f213bdabac3362, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotIndex: 0
+  isAnEquipementSlot: 0
 --- !u!1 &1045510183
 GameObject:
   m_ObjectHideFlags: 0
@@ -2496,7 +2716,7 @@ MonoBehaviour:
   inventoryImage: {fileID: 21300000, guid: e1486d82ad5077e4faf0d17446da21fc, type: 3}
   itemName: Fire Boots
   itemType: 0
-  equipementType: 0
+  equipementType: 4
   damage: 0
   health: 0
   mana: 10
@@ -2597,6 +2817,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotIndex: 2
+  isAnEquipementSlot: 1
 --- !u!1 &1251980470
 GameObject:
   m_ObjectHideFlags: 0
@@ -2650,6 +2871,7 @@ MonoBehaviour:
   inventoryImage: {fileID: 21300000, guid: 6b03d724ad58fb64783612e033002fd4, type: 3}
   itemName: Stone
   itemType: 0
+  ressourcesType: 0
 --- !u!114 &1251980473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2853,6 +3075,7 @@ MonoBehaviour:
   inventoryImage: {fileID: 21300000, guid: 6b03d724ad58fb64783612e033002fd4, type: 3}
   itemName: Stone
   itemType: 0
+  ressourcesType: 0
 --- !u!114 &1343393535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3074,6 +3297,7 @@ MonoBehaviour:
   inventoryImage: {fileID: 21300000, guid: 6b03d724ad58fb64783612e033002fd4, type: 3}
   itemName: Stone
   itemType: 0
+  ressourcesType: 0
 --- !u!1 &1373107395
 GameObject:
   m_ObjectHideFlags: 0
@@ -3116,7 +3340,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -697, y: 0}
+  m_AnchoredPosition: {x: -563, y: 0}
   m_SizeDelta: {x: 50, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1373107397
@@ -3281,6 +3505,7 @@ MonoBehaviour:
   inventoryImage: {fileID: 21300000, guid: 2b2d334d6917fb74a8278a1716ccfff3, type: 3}
   itemName: Wood
   itemType: 0
+  ressourcesType: 0
 --- !u!114 &1444962811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3385,6 +3610,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotIndex: 3
+  isAnEquipementSlot: 1
 --- !u!1 &1453454940
 GameObject:
   m_ObjectHideFlags: 0
@@ -3497,6 +3723,7 @@ MonoBehaviour:
   inventoryImage: {fileID: 21300000, guid: 6b03d724ad58fb64783612e033002fd4, type: 3}
   itemName: Stone
   itemType: 0
+  ressourcesType: 0
 --- !u!114 &1464510334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3926,7 +4153,7 @@ MonoBehaviour:
   inventoryImage: {fileID: 21300000, guid: cc8810e865df54142bd507c243eb583c, type: 3}
   itemName: Chestplate water
   itemType: 0
-  equipementType: 0
+  equipementType: 2
   damage: 0
   health: 100
   mana: 0
@@ -4105,6 +4332,7 @@ MonoBehaviour:
   inventoryImage: {fileID: 21300000, guid: 6b03d724ad58fb64783612e033002fd4, type: 3}
   itemName: Stone
   itemType: 0
+  ressourcesType: 0
 --- !u!114 &1657091208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4263,6 +4491,7 @@ MonoBehaviour:
   inventoryImage: {fileID: 21300000, guid: 2b2d334d6917fb74a8278a1716ccfff3, type: 3}
   itemName: Wood
   itemType: 0
+  ressourcesType: 0
 --- !u!1 &1740214424
 GameObject:
   m_ObjectHideFlags: 0
@@ -4682,6 +4911,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotIndex: 0
+  isAnEquipementSlot: 1
 --- !u!114 &2145467761094893476
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,11 +14,12 @@ public class OpenInventory : MonoBehaviour
 
     void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.I))
         {
+            InventoryManager.Instance.UpdateInventory();
             isOpen = !isOpen;
             canvas.enabled = isOpen;
-            InventoryManager.Instance.UpdateInventory();
         }
     }
 }
