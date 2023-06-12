@@ -39,6 +39,87 @@ public class InventoryManager : MonoBehaviour
         equipements = new Equipement[5];
     }
 
+    public bool HasEnoughResource(Ressources.RessourcesType resourceType, int amount)
+    {
+        // Récupère l'objet de ressource correspondant au type spécifié
+        Ressources resource = GetResourceOfType(resourceType);
+
+        // Vérifie si la ressource n'existe pas
+        if (resource == null)
+        {
+            return false;
+        }
+
+        // Récupère le nombre de cette ressource dans l'inventaire
+        int resourceCount = GetResourceCount(resource);
+
+        // Vérifie si le nombre de ressources est supérieur ou égal à la quantité spécifiée
+        return resourceCount >= amount;
+    }
+
+    public void ConsumeResource(Ressources.RessourcesType resourceType, int amount)
+    {
+        // Récupère l'objet de ressource correspondant au type spécifié
+        Ressources resource = GetResourceOfType(resourceType);
+
+        // Vérifie si la ressource existe
+        if (resource != null)
+        {
+            // Supprime la quantité spécifiée de cette ressource de l'inventaire
+            RemoveFromInventory(resource, amount);
+        }
+    }
+
+    private Ressources GetResourceOfType(Ressources.RessourcesType resourceType)
+    {
+        // Itère à travers les entrées du dictionnaire d'inventaire de ressources
+        foreach (KeyValuePair<Ressources, int> entry in inventoryRessources)
+        {
+            // Récupère l'objet de ressource de l'entrée actuelle
+            Ressources resource = entry.Key;
+
+            // Vérifie si le type de ressource correspond au type spécifié
+            if (resource.ressourcesType == resourceType)
+            {
+                // Retourne l'objet de ressource correspondant
+                return resource;
+            }
+        }
+
+        // Aucune correspondance trouvée, retourne null
+        return null;
+    }
+
+    private int GetResourceCount(Ressources resource)
+    {
+        // Vérifie si la ressource existe dans le dictionnaire d'inventaire de ressources
+        if (inventoryRessources.TryGetValue(resource, out int count))
+        {
+            // Retourne la quantité de la ressource
+            return count;
+        }
+
+        // La ressource n'existe pas dans l'inventaire, retourne 0
+        return 0;
+    }
+
+    private void RemoveFromInventory(Ressources resource, int amount)
+    {
+        // Vérifie si la ressource existe dans le dictionnaire d'inventaire de ressources
+        if (inventoryRessources.ContainsKey(resource))
+        {
+            // Réduit la quantité de la ressource dans l'inventaire
+            inventoryRessources[resource] -= amount;
+
+            // Vérifie si la quantité de ressources est inférieure ou égale à 0
+            if (inventoryRessources[resource] <= 0)
+            {
+                // Supprime la ressource du dictionnaire d'inventaire
+                inventoryRessources.Remove(resource);
+            }
+        }
+    }
+
     // Crée un nouvel objet dans l'inventaire avec le sprite correspondant au type d'objet
     private void CreateInventoryItem(Ressources item)
     {
