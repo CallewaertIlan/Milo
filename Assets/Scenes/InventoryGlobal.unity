@@ -567,6 +567,7 @@ GameObject:
   - component: {fileID: 163993119}
   - component: {fileID: 163993122}
   - component: {fileID: 163993121}
+  - component: {fileID: 163993123}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -717,6 +718,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68161dd858016b844b9cc612dbd1b97f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &163993123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163993114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d64037eac5e78d449d2c1462d66bb1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  health: 0
+  mana: 0
 --- !u!1 &176949735
 GameObject:
   m_ObjectHideFlags: 0
@@ -1439,6 +1455,7 @@ MonoBehaviour:
   inventoryCanva: {fileID: 993761403}
   imagePrefab: {fileID: 2145467761763030077, guid: 0c65a0f7510624f479e09032781ecb20, type: 3}
   linePrefab: {fileID: 7137386620087501941, guid: e6f63a6ebde202b4da65ff0bf13e6b56, type: 3}
+  inventoryEquipement: []
   equipements: []
 --- !u!4 &419935618
 Transform:

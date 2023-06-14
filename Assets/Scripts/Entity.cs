@@ -6,23 +6,30 @@ public class Entity : MonoBehaviour
 {
     [SerializeField] protected float life = 0;
     [SerializeField] protected float maxLife;
+    [SerializeField] protected float startMaxLife;
 
     protected float timeLastUseMana;
     protected float pourcentManaGainThisFrame;
     [SerializeField] protected float mana = 0;
     [SerializeField] protected float maxMana;
+    [SerializeField] protected float startMaxMana;
     [SerializeField] protected float timeToGainMaxMana;
     [SerializeField] protected float timeBeforeStartGainMana;
 
     [SerializeField] protected float speed;
 
     [SerializeField] protected float damage;
+    [SerializeField] protected float startDamage;
 
     // Start is called before the first frame update
     protected void Start()
     {
         AddLife(maxLife);
         timeLastUseMana = Time.time;
+
+        startMaxLife = maxLife;
+        startMaxMana = maxMana;
+        startDamage = damage;
     }
     
     // Update is called once per frame
@@ -75,5 +82,20 @@ public class Entity : MonoBehaviour
     {
         // Prendre des dégats
         life -= dps;
+    }
+
+    public void SetMaxLifeWithStartValue(float l)
+    {
+        maxLife = startMaxLife + l;
+    }
+
+    public void SetMaxManaWithStartValue(float m)
+    {
+        maxMana = startMaxMana + m;
+    }
+
+    public void SetDamageWithStartValue(float d)
+    {
+        damage = startDamage + d;
     }
 }

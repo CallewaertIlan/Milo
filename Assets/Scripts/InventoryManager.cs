@@ -18,9 +18,9 @@ public class InventoryManager : MonoBehaviour
         get { return _instance; }
     }
 
-    [SerializeField] private Dictionary<Ressources, int> inventoryRessources; // Dictionnaire pour stocker les objets de l'inventaire avec leur quantité
-    [SerializeField] private List<Equipement> inventoryEquipement; // Dictionnaire pour stocker les objets de l'inventaire avec leur quantité
-    [SerializeField] private Equipement[] equipements; // Dictionnaire pour stocker les objets de l'inventaire avec leur quantité
+    [SerializeField] public Dictionary<Ressources, int> inventoryRessources; // Dictionnaire pour stocker les objets de l'inventaire avec leur quantité
+    [SerializeField] public List<Equipement> inventoryEquipement; // Dictionnaire pour stocker les objets de l'inventaire avec leur quantité
+    [SerializeField] public Equipement[] equipements; // les equipements equipés
 
     private void Awake()
     {
