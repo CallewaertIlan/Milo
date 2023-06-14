@@ -10,10 +10,6 @@ public class ThrowSlot : MonoBehaviour, IDropHandler
         Ressources res = eventData.pointerDrag.GetComponent<Ressources>();
         Equipement equip = eventData.pointerDrag.GetComponent<Equipement>();
 
-        if (res != null) InventoryManager.Instance.Remove(res);
-        if (equip != null) InventoryManager.Instance.Remove(equip);
-
         Debug.Log("Drop Throw");
-
     }
 }

@@ -13,8 +13,6 @@ public class ItemSlot : MonoBehaviour, IDropHandler
         InventoryItem ii = eventData.pointerDrag.GetComponent<InventoryItem>();
         Equipement equipementItem = eventData.pointerDrag.GetComponent<Equipement>();
 
-        Debug.Log(equipementItem);
-
         if (ii != null)
         {
             
@@ -25,6 +23,8 @@ public class ItemSlot : MonoBehaviour, IDropHandler
             ii.transform.localPosition = new Vector3(0, 0, 0);
 
             ii.transform.localScale = new Vector3(1, ii.transform.localScale.y, 1);
+
+            Debug.Log("Equip");
         }
 
     }
