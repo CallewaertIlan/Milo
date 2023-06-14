@@ -782,7 +782,7 @@ GameObject:
   - component: {fileID: 1473154237}
   - component: {fileID: 1473154239}
   m_Layer: 6
-  m_Name: Mob
+  m_Name: Merchand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -915,7 +915,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5260188597ee41f4684e0d1fa84b4e4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionText: {fileID: 0}
+  type: 3
+  panel: {fileID: 1208823085}
 --- !u!1 &1878919983
 GameObject:
   m_ObjectHideFlags: 0

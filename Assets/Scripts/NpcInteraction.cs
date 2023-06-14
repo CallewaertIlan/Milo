@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UIElements;
 
 public class NpcInteraction : MonoBehaviour
@@ -21,8 +23,7 @@ public class NpcInteraction : MonoBehaviour
             //Debug.Log("Press F to interact");
             if (Input.GetKeyDown(KeyCode.F))
             {
-                Debug.Log("Interacted With NPC");
-
+                hit.collider.GetComponent<NPC>().SetIsInteracting(true);
             }
         }
         else

@@ -6,11 +6,13 @@ using UnityEngine.UI;
 
 public class NPC : MonoBehaviour
 {
-    [SerializeField] Text interactionText;
-
     public enum NpcType { Classic, Blacksmith, Mage, Merchand };
     
-    NpcType type;
+    [SerializeField] NpcType type;
+
+    private bool isInteracting;
+
+    [SerializeField] GameObject panel;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,12 +22,31 @@ public class NPC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        InteractionBehaviour();
     }
 
     void InteractionBehaviour()
     {
+        if (isInteracting)
+        {
+            panel.SetActive(true);
+        }
 
+        if (Input.GetKeyDown(KeyCode.Escape)) 
+        {
+            panel.SetActive(false);
+            isInteracting = false;
+        }
+    }
+
+    public NpcType GetNpcType()
+    {
+        return type;
+    }
+
+    public void SetIsInteracting(bool _isInteracting) 
+    {
+        isInteracting = _isInteracting; 
     }
 
 }
