@@ -176,6 +176,13 @@ public class InventoryManager : MonoBehaviour
         Remove(equipement);
     }
 
+    public Equipement Replace(Equipement equipement, int equipementInt)
+    {
+        Equipement lastEquipement = equipements[equipementInt];
+        Equip(equipement, equipementInt);
+        return lastEquipement;
+    }
+
     public bool EquipementIsEmpty(Equipement equipement, int equipementInt)
     {
         if (equipements[equipementInt] == null)

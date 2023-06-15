@@ -5,7 +5,12 @@ using UnityEngine.EventSystems;
 public class ItemSlot : MonoBehaviour, IDropHandler
 {
 
-    [SerializeField] private Equipement.EquipementType slotIndex;
+    [SerializeField] private GameObject[] slots;
+
+    private void Awake()
+    {
+
+    }
 
     public void OnDrop(PointerEventData eventData)
     {
@@ -15,29 +20,48 @@ public class ItemSlot : MonoBehaviour, IDropHandler
 
         if (ii != null)
         {
-            
-            if (equipementItem != null) ii.isOnImage = EquipItem(equipementItem);
 
-            ii.transform.SetParent(transform, true);
+            if (equipementItem != null)
+            {
+                EquipItem(equipementItem);
+                ii.isOnImage = true;
 
-            ii.transform.localPosition = new Vector3(0, 0, 0);
+                ii.transform.localPosition = new Vector3(0, 0, 0);
 
-            ii.transform.localScale = new Vector3(1, ii.transform.localScale.y, 1);
+                ii.transform.localScale = new Vector3(1, ii.transform.localScale.y, 1);
+            }
 
-            Debug.Log("Equip");
         }
 
     }
 
-    private bool EquipItem(Equipement item)
+    private void EquipItem(Equipement item)
     {
-        if (item.equipementType == slotIndex)
+        for (int i = 0; i < slots.Length; i++)
         {
-            if (InventoryManager.Instance.EquipementIsEmpty(item, (int)slotIndex))
-                InventoryManager.Instance.Equip(item, (int)slotIndex);
+            if (item.equipementType == slots[i].GetComponent<Equipement>().equipementType)
+            {
+                if (InventoryManager.Instance.EquipementIsEmpty(item, i))
+                {
+                    InventoryManager.Instance.Equip(item, i);
+                    item.transform.SetParent(slots[i].transform, true);
+                    Debug.Log("Equip");
+                }
+                else
+                {
+                    Equipement lastEquipement = InventoryManager.Instance.Replace(item, i);
 
-            return true;
+                    lastEquipement.transform.SetParent(transform, true);
+                    lastEquipement.gameObject.SetActive(false);
+
+                    item.transform.SetParent(slots[i].transform, true);
+
+                    InventoryManager.Instance.AddToInventory(lastEquipement);
+                    InventoryManager.Instance.UpdateInventory();
+
+                    Debug.Log("Replace");
+                }
+            }
         }
-        else return false;
     }
 }
