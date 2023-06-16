@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class Crafting : MonoBehaviour
 {
-
     [SerializeField] private Weapon sword;
     [SerializeField] private Helmet helmet;
     [SerializeField] private Chestplate chestplate;
@@ -29,7 +28,7 @@ public class Crafting : MonoBehaviour
             ConsumeResources(requiredResources);
 
             // Ajoute l'épée à l'inventaire
-            inventoryManager.AddToInventory(sword);
+            /*inventoryManager.AddToInventory(sword);*/
 
             Debug.Log("Épée fabriquée !");
         }
@@ -54,7 +53,7 @@ public class Crafting : MonoBehaviour
             ConsumeResources(requiredResources);
 
             // Ajoute le casque à l'inventaire
-            inventoryManager.AddToInventory(helmet);
+            /*inventoryManager.AddToInventory(helmet);*/
 
             Debug.Log("Casque fabriqué !");
         }
@@ -80,7 +79,7 @@ public class Crafting : MonoBehaviour
             ConsumeResources(requiredResources);
 
             // Ajoute le plastron à l'inventaire
-            inventoryManager.AddToInventory(chestplate);
+            /*inventoryManager.AddToInventory(chestplate);*/
 
             Debug.Log("Plastron fabriqué !");
         }
@@ -105,7 +104,7 @@ public class Crafting : MonoBehaviour
             ConsumeResources(requiredResources);
 
             // Ajoute les jambières à l'inventaire
-            inventoryManager.AddToInventory(leggings);
+            /*inventoryManager.AddToInventory(leggings);*/
 
             Debug.Log("Jambières fabriquées !");
         }
@@ -131,7 +130,7 @@ public class Crafting : MonoBehaviour
             ConsumeResources(requiredResources);
 
             // Ajoute les bottes à l'inventaire
-            inventoryManager.AddToInventory(boots);
+            /*inventoryManager.AddToInventory(boots);*/
 
             Debug.Log("Bottes fabriqué !");
         }

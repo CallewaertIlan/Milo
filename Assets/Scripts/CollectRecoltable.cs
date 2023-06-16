@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CollectRecoltable : MonoBehaviour
 {
-    [SerializeField] GameObject player;
+    [SerializeField] GameObject cameraPlayer;
     private bool onTrigger;
     private GameObject recoltableTriggered;
     private CollectBar collectBar;
@@ -16,37 +16,23 @@ public class CollectRecoltable : MonoBehaviour
 
     void Update()
     {
-        if (onTrigger && Input.GetKeyDown(KeyCode.E) && recoltableTriggered != null)
+        if (onTrigger && recoltableTriggered != null)
         {
-<<<<<<< HEAD
-            Recoltables recoltable = null;
-            if (Input.GetKeyDown(KeyCode.E) && recoltableTriggered != null)
-            {
-                recoltable = recoltableTriggered.GetComponentInParent<Recoltables>();
-
-/*                if (!InventoryManager.Instance.HasExceededLimit(recoltable.type.ToString(), 10))
-                {*/
-                recoltable.OnTake();
-                recoltableTriggered = null;
-/*                }
-                else
-                {
-                    Debug.Log("Maximum limit for " + recoltable.type);
-                }*/
-=======
             RaycastHit hit;
-            if (Physics.Raycast(player.transform.position, player.transform.TransformDirection(Vector3.forward), out hit, LayerMask.GetMask("Recoltable")))
+            if (Physics.Raycast(transform.position, cameraPlayer.transform.TransformDirection(Vector3.forward), out hit, LayerMask.GetMask("Recoltable")))
             {
-                Recoltable recoltable = hit.collider.GetComponent<Recoltable>();
-                if (recoltable != null)
+                Debug.DrawRay(transform.position, cameraPlayer.transform.TransformDirection(Vector3.forward) * hit.distance, Color.blue);
+
+                Recoltables recoltable = hit.collider.GetComponent<Recoltables>();
+                if (Input.GetKeyDown(KeyCode.E) &&  recoltable!= null)
                 {
+                    Debug.Log("prout");
                     if (!collectBar.IsMoving())
                     {
                         recoltable.OnTake();
                         recoltableTriggered = null;
                     }
                 }
->>>>>>> 38a5c332129754a38130212972aea1ab715e68b9
             }
         }
     }
