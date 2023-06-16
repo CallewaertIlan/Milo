@@ -22,6 +22,11 @@ public class Crafting : MonoBehaviour
         {
             // Consomme les ressources nécessaires
             ConsumeResources(requiredResources);
+
+            // Ajoute l'épée à l'inventaire
+            // Weapon sword = new Weapon();
+            // inventoryManager.AddToInventory(sword);
+
             Debug.Log("Épée fabriquée !");
         }
         else
@@ -43,6 +48,11 @@ public class Crafting : MonoBehaviour
         {
             // Consomme les ressources nécessaires
             ConsumeResources(requiredResources);
+
+            // Ajoute le casque à l'inventaire
+            // Helmet helmet = new Helmet();
+            // inventoryManager.AddToInventory(helmet);
+
             Debug.Log("Casque fabriqué !");
         }
         else
@@ -65,6 +75,11 @@ public class Crafting : MonoBehaviour
         {
             // Consomme les ressources nécessaires
             ConsumeResources(requiredResources);
+
+            // Ajoute le plastron à l'inventaire
+            // Chestplate chestplate = new Chestplate();
+            // inventoryManager.AddToInventory(chestplate);
+
             Debug.Log("Plastron fabriqué !");
         }
         else
@@ -86,6 +101,11 @@ public class Crafting : MonoBehaviour
         {
             // Consomme les ressources nécessaires
             ConsumeResources(requiredResources);
+
+            // Ajoute les jambières à l'inventaire
+            // Pants pants = new Pants();
+            // inventoryManager.AddToInventory(pants);
+
             Debug.Log("Jambières fabriquées !");
         }
         else
@@ -108,6 +128,11 @@ public class Crafting : MonoBehaviour
         {
             // Consomme les ressources nécessaires
             ConsumeResources(requiredResources);
+
+            // Ajoute les bottes à l'inventaire
+            // Boots boots = new Boots();
+            // inventoryManager.AddToInventory(boots);
+
             Debug.Log("Bottes fabriqué !");
         }
         else
