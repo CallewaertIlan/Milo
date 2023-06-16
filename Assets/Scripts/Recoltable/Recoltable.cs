@@ -32,6 +32,7 @@ public class Recoltable : MonoBehaviour
     
     public virtual void Take()
     {
+        InventoryManager.Instance.AddToInventory(this);
         Equipement equip = GetComponent<Equipement>();
         Ressources res = GetComponent<Ressources>();
 
