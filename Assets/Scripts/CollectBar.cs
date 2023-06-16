@@ -9,6 +9,8 @@ public class CollectBar : MonoBehaviour
     private GameObject HUD;
     private Recoltable rec;
     private HarvestBar harvestBar;
+    private MovePlayer movePlayer;
+    private bool playerIsMoving;
 
     // Start is called before the first frame update
     void Start()
@@ -17,20 +19,39 @@ public class CollectBar : MonoBehaviour
         HUD.transform.position = transform.position;
         rec = HUD.GetComponentInParent<Recoltable>();
         harvestBar = HUD.GetComponent<HarvestBar>();
+        movePlayer = FindObjectOfType<MovePlayer>();
     }
 
     private void Update()
     {
         float pourcentProgress = rec.progressTimeCollect * 100 / rec.timeToCollect;
 
-        // affiche la bar de chargement seulement si elle n'est pas égale a 0 
-        if (pourcentProgress == 0) HUD.gameObject.SetActive(false);
-        else HUD.gameObject.SetActive(true);
+        if (pourcentProgress > 0 && !movePlayer.IsMoving())
+        {
+            HUD.gameObject.SetActive(true);
+            // Change la taille de la barre
+            harvestBar.EditSize(pourcentProgress);
+        }
+        else
+        {
+            HUD.gameObject.SetActive(false);
+            if (movePlayer.IsMoving())
+            {
+                rec.CancelCollect(); // Annule la récolte en cours
+            }
+        }
 
-        // change la taille de la bar 
-        harvestBar.EditSize(pourcentProgress);
-
-        // mets la bar dans la direction de la caméra
+        // Oriente la barre dans la direction de la caméra
         HUD.transform.LookAt(characterCamera.transform.position);
+    }
+
+    public bool IsMoving()
+    {
+        return playerIsMoving;
+    }
+
+    public void PlayerIsMoving(bool isMoving)
+    {
+        playerIsMoving = isMoving;
     }
 }
