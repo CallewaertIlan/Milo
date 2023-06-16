@@ -41,7 +41,6 @@ public class BambiAI : MonoBehaviour
         // Vérifie si l'ennemi est assez proche du joueur pour m'enfuir
         if (Vector3.Distance(transform.position, player.position) <= fleeRange)
         {
-            Debug.Log("Je m'enfuis, au secours !");
             currentState = BambiState.Flee; // Passe à l'état de fuite
             navAgent.speed = fleeSpeed;
             return;
@@ -49,7 +48,6 @@ public class BambiAI : MonoBehaviour
         // Vérifie si l'ennemi est arrivé à destination
         if (!navAgent.pathPending && navAgent.remainingDistance < 0.5f)
         {
-            Debug.Log("Je patrouille");
             SetRandomDestination(); // Sélectionne une nouvelle destination de patrouille aléatoire
         }
     }
@@ -58,7 +56,6 @@ public class BambiAI : MonoBehaviour
         // Vérifie si l'ennemi est suffisamment éloigné du joueur pour revenir à l'état de patrouille
         if (Vector3.Distance(transform.position, player.position) > fleeRange)
         {
-            Debug.Log("Ouf j'ai réussis à m'enfuir, mtn je mange la glace");
             currentState = BambiState.Patrol; // Passe à l'état de patrouille
         }
         // Met à jour la destination du NavMeshAgent pour fuir dans la direction opposée au joueur
