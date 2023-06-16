@@ -2,12 +2,15 @@ using UnityEngine;
 
 public class MovePlayer : MonoBehaviour
 {
-    [SerializeField] private float walkSpeed;
-    [SerializeField] private float runSpeed;
     [SerializeField] private GameObject cameraGameObject;
     
     private CollectBar collectBar;
 
+    [SerializeField] private float walkSpeed = 5.0f;
+    [SerializeField] private float runSpeed = 10.0f;
+    [SerializeField] private float gravity = 20.0f;
+    [SerializeField] private Vector3 direction = Vector3.zero;
+    
     private Vector3 movementForward;
     private Vector3 sideMovement;
 
@@ -47,12 +50,12 @@ public class MovePlayer : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            // Courir vers l'avant ou l'arrière
+            // Courir vers l'avant ou l'arriÃ¨re
             transform.Translate((movementForward + sideMovement) * runSpeed * Time.deltaTime, Space.World);
         }
         else
         {
-            // Marcher vers l'avant ou l'arrière
+            // Marcher vers l'avant ou l'arriÃ¨re
             transform.Translate((movementForward + sideMovement) * walkSpeed * Time.deltaTime, Space.World);
         }
     }
