@@ -6,7 +6,7 @@ public class ExplosionSpell : Spell
 {
     [SerializeField] private float timeBeforeExplosionAfterCollision;
 
-    Vector3 scale;
+    private Vector3 scale;
 
     // Start is called before the first frame update
     new void Start()
