@@ -8,6 +8,12 @@ public class Crafting : MonoBehaviour
 {
     public InventoryManager inventoryManager;
 
+    [SerializeField] private Weapon sword;
+    [SerializeField] private Helmet helmet;
+    [SerializeField] private Chestplate chestplate;
+    [SerializeField] private Pants leggings;
+    [SerializeField] private Boots boots;
+
     // Fabrique une épée
     public void CraftSword()
     {
@@ -24,8 +30,7 @@ public class Crafting : MonoBehaviour
             ConsumeResources(requiredResources);
 
             // Ajoute l'épée à l'inventaire
-            // Weapon sword = new Weapon();
-            // inventoryManager.AddToInventory(sword);
+            inventoryManager.AddToInventory(sword);
 
             Debug.Log("Épée fabriquée !");
         }
@@ -50,8 +55,7 @@ public class Crafting : MonoBehaviour
             ConsumeResources(requiredResources);
 
             // Ajoute le casque à l'inventaire
-            // Helmet helmet = new Helmet();
-            // inventoryManager.AddToInventory(helmet);
+            inventoryManager.AddToInventory(helmet);
 
             Debug.Log("Casque fabriqué !");
         }
@@ -77,8 +81,7 @@ public class Crafting : MonoBehaviour
             ConsumeResources(requiredResources);
 
             // Ajoute le plastron à l'inventaire
-            // Chestplate chestplate = new Chestplate();
-            // inventoryManager.AddToInventory(chestplate);
+            inventoryManager.AddToInventory(chestplate);
 
             Debug.Log("Plastron fabriqué !");
         }
@@ -103,8 +106,7 @@ public class Crafting : MonoBehaviour
             ConsumeResources(requiredResources);
 
             // Ajoute les jambières à l'inventaire
-            // Pants pants = new Pants();
-            // inventoryManager.AddToInventory(pants);
+            inventoryManager.AddToInventory(leggings);
 
             Debug.Log("Jambières fabriquées !");
         }
@@ -130,8 +132,7 @@ public class Crafting : MonoBehaviour
             ConsumeResources(requiredResources);
 
             // Ajoute les bottes à l'inventaire
-            // Boots boots = new Boots();
-            // inventoryManager.AddToInventory(boots);
+            inventoryManager.AddToInventory(boots);
 
             Debug.Log("Bottes fabriqué !");
         }
