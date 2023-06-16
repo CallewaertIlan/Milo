@@ -18,6 +18,22 @@ public class CollectRecoltable : MonoBehaviour
     {
         if (onTrigger && Input.GetKeyDown(KeyCode.E) && recoltableTriggered != null)
         {
+<<<<<<< HEAD
+            Recoltables recoltable = null;
+            if (Input.GetKeyDown(KeyCode.E) && recoltableTriggered != null)
+            {
+                recoltable = recoltableTriggered.GetComponentInParent<Recoltables>();
+
+/*                if (!InventoryManager.Instance.HasExceededLimit(recoltable.type.ToString(), 10))
+                {*/
+                recoltable.OnTake();
+                recoltableTriggered = null;
+/*                }
+                else
+                {
+                    Debug.Log("Maximum limit for " + recoltable.type);
+                }*/
+=======
             RaycastHit hit;
             if (Physics.Raycast(player.transform.position, player.transform.TransformDirection(Vector3.forward), out hit, LayerMask.GetMask("Recoltable")))
             {
@@ -30,6 +46,7 @@ public class CollectRecoltable : MonoBehaviour
                         recoltableTriggered = null;
                     }
                 }
+>>>>>>> 38a5c332129754a38130212972aea1ab715e68b9
             }
         }
     }
