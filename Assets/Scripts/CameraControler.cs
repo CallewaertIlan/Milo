@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CameraControler : MonoBehaviour
 {
+    [SerializeField] private Transform target;
+    [SerializeField] private Vector3 offset;
+
     [SerializeField] private float verticalMouseSensi;
     [SerializeField] private float horizontalMouseSensi;
 
@@ -13,7 +16,7 @@ public class CameraControler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        offset = target.position - transform.position;
     }
 
     // Update is called once per frame
@@ -27,6 +30,8 @@ public class CameraControler : MonoBehaviour
         {
             MoveWithZ0(-cameraMouvement);
         }
+
+        transform.position = target.position - offset;
     }
 
     private void MoveWithZ0(Vector2 move)
