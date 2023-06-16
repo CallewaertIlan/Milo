@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class Recoltable : MonoBehaviour
+public class Recoltables : MonoBehaviour
 {
     public float timeToCollect;
     public float progressTimeCollect;
@@ -32,7 +32,6 @@ public class Recoltable : MonoBehaviour
     
     public virtual void Take()
     {
-        InventoryManager.Instance.AddToInventory(this);
         Equipement equip = GetComponent<Equipement>();
         Ressources res = GetComponent<Ressources>();
 

@@ -16,10 +16,10 @@ public class CollectRecoltable : MonoBehaviour
     {
         if (onTrigger)
         {
-            Recoltable recoltable = null;
+            Recoltables recoltable = null;
             if (Input.GetKeyDown(KeyCode.E) && recoltableTriggered != null)
             {
-                recoltable = recoltableTriggered.GetComponentInParent<Recoltable>();
+                recoltable = recoltableTriggered.GetComponentInParent<Recoltables>();
 
 /*                if (!InventoryManager.Instance.HasExceededLimit(recoltable.type.ToString(), 10))
                 {*/

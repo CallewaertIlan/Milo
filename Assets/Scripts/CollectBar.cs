@@ -7,7 +7,7 @@ public class CollectBar : MonoBehaviour
     [SerializeField] private GameObject HUDPrefab;
     [SerializeField] private GameObject characterCamera;
     private GameObject HUD;
-    private Recoltable rec;
+    private Recoltables rec;
     private HarvestBar harvestBar;
 
     // Start is called before the first frame update
@@ -15,7 +15,7 @@ public class CollectBar : MonoBehaviour
     {
         HUD = GameObject.Instantiate(HUDPrefab, transform);
         HUD.transform.position = transform.position;
-        rec = HUD.GetComponentInParent<Recoltable>();
+        rec = HUD.GetComponentInParent<Recoltables>();
         harvestBar = HUD.GetComponent<HarvestBar>();
     }
 
