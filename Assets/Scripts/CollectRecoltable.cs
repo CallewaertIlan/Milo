@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class CollectRecoltable : MonoBehaviour
 {
+    [SerializeField] GameObject player;
     private bool onTrigger;
     private GameObject recoltableTriggered;
+    private CollectBar collectBar;
 
     void Start()
     {
-        
+        collectBar = FindObjectOfType<CollectBar>();
     }
 
     void Update()
     {
-        if (onTrigger)
+        if (onTrigger && Input.GetKeyDown(KeyCode.E) && recoltableTriggered != null)
         {
+<<<<<<< HEAD
             Recoltables recoltable = null;
             if (Input.GetKeyDown(KeyCode.E) && recoltableTriggered != null)
             {
@@ -30,6 +33,20 @@ public class CollectRecoltable : MonoBehaviour
                 {
                     Debug.Log("Maximum limit for " + recoltable.type);
                 }*/
+=======
+            RaycastHit hit;
+            if (Physics.Raycast(player.transform.position, player.transform.TransformDirection(Vector3.forward), out hit, LayerMask.GetMask("Recoltable")))
+            {
+                Recoltable recoltable = hit.collider.GetComponent<Recoltable>();
+                if (recoltable != null)
+                {
+                    if (!collectBar.IsMoving())
+                    {
+                        recoltable.OnTake();
+                        recoltableTriggered = null;
+                    }
+                }
+>>>>>>> 38a5c332129754a38130212972aea1ab715e68b9
             }
         }
     }
