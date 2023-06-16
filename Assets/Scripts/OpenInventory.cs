@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class OpenInventory : MonoBehaviour
 {
-    [SerializeField] Canvas canvas;
-    [SerializeField] bool isOpen;
+    [SerializeField] private Canvas canvas;
+    [SerializeField] private bool isOpen;
 
     void Start()
     {

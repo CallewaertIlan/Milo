@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class Crafting : MonoBehaviour
 {
-    public InventoryManager inventoryManager;
 
     [SerializeField] private Weapon sword;
     [SerializeField] private Helmet helmet;
@@ -151,7 +150,7 @@ public class Crafting : MonoBehaviour
             int requiredAmount = requiredResource.Value;
 
             // Vérifie si le joueur ne possède pas suffisamment de cette ressource
-            if (!inventoryManager.HasEnoughResource(resourceType, requiredAmount))
+            if (!InventoryManager.Instance.HasEnoughResource(resourceType, requiredAmount))
             {
                 return false;
             }
@@ -170,7 +169,7 @@ public class Crafting : MonoBehaviour
             int requiredAmount = requiredResource.Value;
 
             // Consomme la quantité spécifiée de cette ressource dans l'inventaire
-            inventoryManager.ConsumeResource(resourceType, requiredAmount);
+            InventoryManager.Instance.ConsumeResource(resourceType, requiredAmount);
         }
     }
 }
