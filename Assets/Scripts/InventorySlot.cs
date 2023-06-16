@@ -11,12 +11,15 @@ public class InventorySlot : MonoBehaviour, IDropHandler
 
         if (equip != null)
         {
-            if (InventoryManager.Instance.UnEquip(equip))
+            if (InventoryManager.Instance.IsEquiped(equip))
             {
                 InventoryManager.Instance.AddToInventory(equip);
+                InventoryManager.Instance.UnEquip(equip);
                 InventoryManager.Instance.UpdateInventory();
 
-                Destroy(equip.gameObject);
+                equip.gameObject.SetActive(false);
+
+                Debug.Log("UnEquip");
             }
         }
     }
