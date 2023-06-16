@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
-    [SerializeField] protected float life = 0;
+    [SerializeField] public float life = 0;
     [SerializeField] protected float maxLife;
     [SerializeField] protected float startMaxLife;
 
     protected float timeLastUseMana;
     protected float pourcentManaGainThisFrame;
-    [SerializeField] protected float mana = 0;
+    [SerializeField] public float mana = 0;
     [SerializeField] protected float maxMana;
     [SerializeField] protected float startMaxMana;
     [SerializeField] protected float timeToGainMaxMana;
@@ -35,10 +35,10 @@ public class Entity : MonoBehaviour
     // Update is called once per frame
     protected void Update()
     {
-        // Vérifie si l'entity est encore en vie sinon la fait mourir
+        // VÃ©rifie si l'entity est encore en vie sinon la fait mourir
         if (IsDead()) Death();
 
-        // Vérifie si le temps avant de gagner du mana est passé, si oui gagne du mana 
+        // VÃ©rifie si le temps avant de gagner du mana est passÃ©, si oui gagne du mana 
         if (Time.time > timeLastUseMana + timeBeforeStartGainMana) GainMana();
 
         if (Input.GetKeyDown(KeyCode.P)) Hurt(10);
@@ -57,14 +57,14 @@ public class Entity : MonoBehaviour
         Destroy(gameObject);
     }
 
-    protected void AddLife(float hp)
+    public void AddLife(float hp)
     {
         // Ajoute de la vie et bloque aux hp max
         if (life + hp > maxLife) life = maxLife;
         else life += hp;
     }
 
-    protected void AddMana(float m)
+    public void AddMana(float m)
     {
         // Ajoute de la mana et bloque aux max mana
         if (mana + m > maxMana) mana = maxMana;
@@ -78,9 +78,9 @@ public class Entity : MonoBehaviour
         AddMana(pourcentManaGainThisFrame / 100 * maxMana);
     }
 
-    protected void Hurt(float dps)
+    public void Hurt(float dps)
     {
-        // Prendre des dégats
+        // Prendre des dÃ©gats
         life -= dps;
     }
 
@@ -97,5 +97,10 @@ public class Entity : MonoBehaviour
     public void SetDamageWithStartValue(float d)
     {
         damage = startDamage + d;
+    }
+    
+    public void SetTimeLastManaUse(float t)
+    {
+        timeLastUseMana = t;
     }
 }
