@@ -34,7 +34,7 @@ Material:
     - _Base_Color: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 0, g: 1.317647, b: 11.98431, a: 0}
     - _EdgeColor: {r: 0, g: 0.16342616, b: 1, a: 1}
-    - _Edge_Color: {r: 0, g: 0.0146358125, b: 1.39772, a: 0}
+    - _Edge_Color: {r: 0, g: 0.91235906, b: 11.984314, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &6321561875880677727
 MonoBehaviour:
