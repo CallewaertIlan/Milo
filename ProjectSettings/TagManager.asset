@@ -8,6 +8,7 @@ TagManager:
   - Character
   - Text
   - InventoryImage
+  - Enemy
   layers:
   - Default
   - TransparentFX

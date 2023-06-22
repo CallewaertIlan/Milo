@@ -11,6 +11,10 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private GameObject imagePrefab;
     [SerializeField] private GameObject linePrefab;
 
+    public bool explose = false;
+
+    public bool test = false;
+
     private static InventoryManager _instance;
 
     public static InventoryManager Instance
@@ -274,20 +278,18 @@ public class InventoryManager : MonoBehaviour
         return false;
     }
 
-    public void Remove(Ressources item)
+    public void Remove(Ressources res)
     {
-        foreach (KeyValuePair<Ressources, int> element in inventoryRessources)
-        {
-            Ressources itemInventory = IsOnInventory(item);
+        Debug.Log("Test 1");
+        Ressources itemInventory = IsOnInventory(res);
 
-            if (itemInventory != null && element.Value <= 0)
+        if (itemInventory != null)
+        {
+            inventoryRessources[itemInventory] -= 1;
+
+            if (inventoryRessources[itemInventory] <= 0)
             {
                 inventoryRessources.Remove(itemInventory);
-                return;
-            }
-            else if (itemInventory != null)
-            {
-                inventoryRessources[itemInventory] -= 1;
             }
         }
     }

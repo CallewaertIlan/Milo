@@ -37,10 +37,13 @@ public class ExplosionSpell : Spell
 
     new protected void ActionOnCollision()
     {
-        GetComponent<Rigidbody>().isKinematic = true;
-        GetComponent<SphereCollider>().isTrigger = true;
+        if (InventoryManager.Instance.explose == true)
+        {
+            GetComponent<Rigidbody>().isKinematic = true;
+            GetComponent<SphereCollider>().isTrigger = true;
 
-        if (Time.time > timeFirstCollision + timeBeforeExplosionAfterCollision) state = State.WasCollided;
+            if (Time.time > timeFirstCollision + timeBeforeExplosionAfterCollision) state = State.WasCollided;
+        }
     }
 
     new protected void OnCollisionEnter(Collision collision)

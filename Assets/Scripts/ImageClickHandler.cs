@@ -15,5 +15,9 @@ public class ImageClickHandler : MonoBehaviour, IPointerClickHandler
     {
         Image clickedImage = GetComponent<Image>();
         skills.OnImageClick(clickedImage);
+        if (gameObject.name == "Skill 2")
+        {
+            InventoryManager.Instance.explose = true;
+        }
     }
 }

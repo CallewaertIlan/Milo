@@ -5,13 +5,13 @@ using UnityEngine;
 public class Entity : MonoBehaviour
 {
     [SerializeField] public float life = 0;
-    [SerializeField] protected float maxLife;
+    [SerializeField] public float maxLife;
     [SerializeField] protected float startMaxLife;
 
     protected float timeLastUseMana;
     protected float pourcentManaGainThisFrame;
     [SerializeField] public float mana = 0;
-    [SerializeField] protected float maxMana;
+    [SerializeField] public float maxMana;
     [SerializeField] protected float startMaxMana;
     [SerializeField] protected float timeToGainMaxMana;
     [SerializeField] protected float timeBeforeStartGainMana;

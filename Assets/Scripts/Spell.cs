@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 public class Spell : MonoBehaviour
-{ 
+{
     public enum State
     {
         Launched,
@@ -61,6 +61,6 @@ public class Spell : MonoBehaviour
 
     protected void OnCollisionExit(Collision collision)
     {
-        
+
     }
 }
