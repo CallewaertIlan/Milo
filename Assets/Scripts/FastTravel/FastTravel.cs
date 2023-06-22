@@ -117,4 +117,14 @@ public class FastTravel : MonoBehaviour
         propertyBlock.SetFloat(progressID, progress);
         GetComponent<Renderer>().SetPropertyBlock(propertyBlock);
     }
+
+    public void SetFastTravelPlace(FastTravelPlace ftp)
+    {
+        emplacement = ftp;
+    }
+
+    public FastTravelPlace GetFastTravelPlace()
+    {
+        return emplacement;
+    }
 }
