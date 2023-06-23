@@ -12,17 +12,21 @@ public class OpenMap : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.M))
         {
-            canvasMap.SetActive(true);
-            canvasMiniMap.SetActive(false);
+            OpenTheMap(true);
         }
 
         if (canvasMap.activeInHierarchy)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                canvasMap.SetActive(false);
-                canvasMiniMap.SetActive(true);
+                OpenTheMap(false);
             }
         }
+    }
+
+    public void OpenTheMap(bool active)
+    {
+        canvasMap.SetActive(active);
+        canvasMiniMap.SetActive(!active);
     }
 }

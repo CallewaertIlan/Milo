@@ -6,7 +6,7 @@ public class FastTravel : MonoBehaviour
 {
     [SerializeField] private Canvas fastTravelCanvas;
     [SerializeField] private GameObject progressBar;
-    [SerializeField] private FastTravelPlace emplacement;
+    public FastTravelPlace placeToTravel;
 
     [SerializeField] private float timeBeforeTp;
     [SerializeField] private float timeAfterTp;
@@ -20,6 +20,7 @@ public class FastTravel : MonoBehaviour
     private float timeStartTp;
     private float timeWasTp;
     private MovePlayer moveScript;
+    private OpenMap openMapScript;
 
     private bool isTp;
 
@@ -31,6 +32,7 @@ public class FastTravel : MonoBehaviour
         isTp = false;
         wasTp = false;
         moveScript = GetComponent<MovePlayer>();
+        openMapScript = GetComponent<OpenMap>();
 
         // R�cup�rer le Renderer attach� � l'objet
         rendererFastTravel = GetComponent<Renderer>();
@@ -40,16 +42,7 @@ public class FastTravel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (emplacement != null)
-        {
-            if (Input.GetKeyDown(KeyCode.L) && !isTp)
-            {
-                ActiveTp(true);
-                timeStartTp = Time.time;
-                wasTp = false;
-            }
-        }
-
+     
         if (isTp)
         {
             if (moveScript.IsMoving())
@@ -79,11 +72,12 @@ public class FastTravel : MonoBehaviour
     {
         if (timeStartTp + timeBeforeTp <= Time.time)
         {
-            transform.position = emplacement.fastTravelPosition;
+            transform.position = placeToTravel.fastTravelPosition;
             fastTravelCanvas.gameObject.SetActive(false);
             ActiveTp(false);
             wasTp = true;
             timeWasTp = Time.time;
+            placeToTravel = null;
         }
     }
 
@@ -118,13 +112,11 @@ public class FastTravel : MonoBehaviour
         GetComponent<Renderer>().SetPropertyBlock(propertyBlock);
     }
 
-    public void SetFastTravelPlace(FastTravelPlace ftp)
+    public void ButtonPressTravel()
     {
-        emplacement = ftp;
-    }
-
-    public FastTravelPlace GetFastTravelPlace()
-    {
-        return emplacement;
+        openMapScript.OpenTheMap(false);
+        ActiveTp(true);
+        timeStartTp = Time.time;
+        wasTp = false;
     }
 }

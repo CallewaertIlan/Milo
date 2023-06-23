@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: cdf799ed080d5d4439ebd343b54579c7, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 818556a701f36224e9570978d5b0e95e, type: 2}
 --- !u!1 &28858918
 GameObject:
   m_ObjectHideFlags: 0
@@ -2931,7 +2931,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 300830023}
         m_TargetAssemblyTypeName: ButtonFastTravel, Assembly-CSharp
-        m_MethodName: SelectFastTravel
+        m_MethodName: Travel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2993,8 +2993,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fastTravelPlace: {fileID: 1043205596}
   player: {fileID: 1938417465}
-  positionSelected: {fileID: 21300000, guid: f996f1bb9011ea74584b64a2e8550a4f, type: 3}
-  positionUnselected: {fileID: 21300000, guid: 4c1f91ff8c741de4ca16c43489ed88b4, type: 3}
 --- !u!1 &333299516
 GameObject:
   m_ObjectHideFlags: 0
@@ -11467,8 +11465,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fastTravelPlace: {fileID: 921756560}
   player: {fileID: 1938417465}
-  positionSelected: {fileID: 21300000, guid: f996f1bb9011ea74584b64a2e8550a4f, type: 3}
-  positionUnselected: {fileID: 21300000, guid: 4c1f91ff8c741de4ca16c43489ed88b4, type: 3}
 --- !u!114 &1522561664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11515,7 +11511,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1522561663}
         m_TargetAssemblyTypeName: ButtonFastTravel, Assembly-CSharp
-        m_MethodName: SelectFastTravel
+        m_MethodName: Travel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14241,7 +14237,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1850271193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15321,7 +15317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fastTravelCanvas: {fileID: 1064525887}
   progressBar: {fileID: 230666243}
-  emplacement: {fileID: 1043205596}
+  placeToTravel: {fileID: 0}
   timeBeforeTp: 3
   timeAfterTp: 2
   dissapearMaterial: {fileID: 2100000, guid: bada35b0795f67547af3b73996ec8ff8, type: 2}
