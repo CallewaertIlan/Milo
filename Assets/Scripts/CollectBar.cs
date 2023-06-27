@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class CollectBar : MonoBehaviour
@@ -20,6 +21,7 @@ public class CollectBar : MonoBehaviour
         rec = HUD.GetComponentInParent<Recoltables>();
         harvestBar = HUD.GetComponent<HarvestBar>();
         movePlayer = FindObjectOfType<MovePlayer>();
+        characterCamera = GameObject.Find("Main Camera");
     }
 
     private void Update()

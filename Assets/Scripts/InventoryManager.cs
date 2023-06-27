@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -192,6 +193,20 @@ public class InventoryManager : MonoBehaviour
             img.GetComponent<Image>().sprite = element.Key.inventoryImage;
             img.GetComponentInChildren<Text>().text = element.Value.ToString();
 
+            // Ajoute le script correspondant à la ressource ramassée
+            Ressources ressource = element.Key;
+            Type scriptType = GetRessourceScriptType(ressource);
+            UnityEngine.Component component = img.AddComponent(scriptType);
+
+            var fields = scriptType.GetFields();
+
+            // Copy the values from sourceComponent to targetComponent
+            foreach (var field in fields)
+            {
+                var value = field.GetValue(ressource);
+                field.SetValue(component, value);
+            }
+
             x++;
             if (x % 10 == 0)
             {
@@ -238,6 +253,21 @@ public class InventoryManager : MonoBehaviour
             if (y == 7) return;
         }
 
+    }
+
+    private Type GetRessourceScriptType(Ressources ressource)
+    {
+        switch (ressource.ressourcesType)
+        {
+            case Ressources.RessourcesType.WOOD:
+                return typeof(Wood);
+            case Ressources.RessourcesType.IRON:
+                return typeof(Iron);
+            case Ressources.RessourcesType.STONE:
+                return typeof(Stone);
+            default:
+                return null;
+        }
     }
 
     private void ClearCanva()

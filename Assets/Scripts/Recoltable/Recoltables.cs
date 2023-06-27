@@ -40,8 +40,14 @@ public class Recoltables : MonoBehaviour
         Equipement equip = GetComponent<Equipement>();
         Ressources res = GetComponent<Ressources>();
 
-        if (equip != null) InventoryManager.Instance.AddToInventory(equip);
-        else if (res != null) InventoryManager.Instance.AddToInventory(res);
+        if (equip != null)
+        {
+            InventoryManager.Instance.AddToInventory(equip);
+        }
+        else if (res != null)
+        {
+            InventoryManager.Instance.AddToInventory(res);
+        }
 
         gameObject.SetActive(false);
     }
