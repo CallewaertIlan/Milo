@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85c45f2f1207edc4d9a776679b92a169, type: 3}
+  m_Script: {fileID: 11500000, guid: 75c08506ea0edcf41821fafcb52c4084, type: 3}
   m_Name: ThrownIron
   m_EditorClassIdentifier: 
-  resourceType: 1
-  resourcePrefab: {fileID: 6883393773157739814, guid: 7493c04e2d9db914e9db4d3f200dc717, type: 3}
+  itemType: 1
+  itemPrefab: {fileID: 139864669070797132, guid: 7493c04e2d9db914e9db4d3f200dc717, type: 3}
   decompositionTime: 60

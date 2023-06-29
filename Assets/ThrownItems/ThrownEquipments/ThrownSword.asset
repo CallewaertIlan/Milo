@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85c45f2f1207edc4d9a776679b92a169, type: 3}
-  m_Name: ThrownWood
+  m_Script: {fileID: 11500000, guid: 75c08506ea0edcf41821fafcb52c4084, type: 3}
+  m_Name: ThrownSword
   m_EditorClassIdentifier: 
-  resourceType: 0
-  resourcePrefab: {fileID: 5028600382258819950, guid: 6839b803eae658a43989e2d4e205e40c, type: 3}
+  itemType: 0
+  itemPrefab: {fileID: 3478248882094113123, guid: 29935e169f8e65a419f120616cafb2bb, type: 3}
   decompositionTime: 60

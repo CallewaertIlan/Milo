@@ -5970,8 +5970,11 @@ MonoBehaviour:
   player: {fileID: 163993118}
   thrownResources:
   - {fileID: 11400000, guid: 8524f329338b8f9459cc8d667bae3844, type: 2}
-  - {fileID: 11400000, guid: 1e4797c39736074409cd60f41205ff8e, type: 2}
-  - {fileID: 11400000, guid: 5a9859f41f5ad9646b3855f885e146e2, type: 2}
+  - {fileID: 11400000, guid: ab4e9cdcf53fd0d42a77e985ead7b05c, type: 2}
+  - {fileID: 11400000, guid: 75e460af3446ee741b65ebb20dc33953, type: 2}
+  thrownEquipments:
+  - {fileID: 11400000, guid: 5fa67d5e7869d27478bceb7fad8601b6, type: 2}
+  - {fileID: 11400000, guid: 6ea3adb6975fbb64fbd8664e8e27a96b, type: 2}
 --- !u!1 &817982705
 GameObject:
   m_ObjectHideFlags: 0
