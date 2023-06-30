@@ -24,9 +24,9 @@ public class LaunchSpell : MonoBehaviour
     }
     void StartSpell()
     {
-        if (spellPrefab.GetComponent<Spell>().manaCost < entityScript.mana)
+        if (spellPrefab.GetComponent<Spell>().manaCost <= entityScript.mana)
         {
-            GameObject spell = Instantiate(spellPrefab, new Vector3(transform.position.x + cameraObject.transform.forward.x, transform.position.y + cameraObject.transform.forward.y, transform.position.z + transform.forward.z), transform.rotation);
+            GameObject spell = Instantiate(spellPrefab, transform.position + cameraObject.transform.forward, cameraObject.transform.rotation);
             Spell spellScript = spell.GetComponent<Spell>();
             spellScript.SetDirection(cameraObject.transform.forward);
             entityScript.AddMana(-spellScript.manaCost);

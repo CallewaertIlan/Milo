@@ -51,7 +51,7 @@ public class Spell : MonoBehaviour
 
     public void SetDirection(Vector3 dir)
     {
-        actionDirection = dir;
+        transform.forward = dir;
     }
 
     protected void OnCollisionEnter(Collision collision)

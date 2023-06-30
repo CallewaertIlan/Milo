@@ -25,7 +25,7 @@ public class ExplosionSpell : Spell
 
     new protected void ActionBeforeTriggering()
     {
-        transform.Translate(actionDirection * Time.deltaTime * 10);
+        transform.Translate(transform.forward * Time.deltaTime * 10);
     }
 
     new protected void ActionAfterTriggering()
