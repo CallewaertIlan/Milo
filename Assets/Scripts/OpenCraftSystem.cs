@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class OpenCraftSystem : MonoBehaviour
 {
-    [SerializeField] private Canvas canvas;
+    [SerializeField] private Canvas craftCanvas;
+    [SerializeField] private Canvas settingsCanvas;
     [SerializeField] private bool isOpen;
 
     private void Start()
@@ -12,12 +13,14 @@ public class OpenCraftSystem : MonoBehaviour
         isOpen = false;
     }
 
-    private void Update()
+    void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C))
+        bool settingsOpen = settingsCanvas.enabled;
+
+        if (Input.GetKeyDown(KeyCode.C) && !settingsOpen)
         {
             isOpen = !isOpen;
-            canvas.enabled = isOpen;
+            craftCanvas.enabled = isOpen;
         }
     }
 }

@@ -3,18 +3,36 @@ using UnityEngine;
 public class MovePlayer : MonoBehaviour
 {
     [SerializeField] private GameObject cameraGameObject;
-    
+
     private CollectBar collectBar;
 
     [SerializeField] private float walkSpeed = 5.0f;
     [SerializeField] private float runSpeed = 10.0f;
-    
+
     private Vector3 movementForward;
     private Vector3 sideMovement;
+
+    private KeyCode forwardKey;
+    private KeyCode backKey;
+    private KeyCode rightKey;
+    private KeyCode leftKey;
+
+    private bool isInitialized = false;
+
+    private void Awake()
+    {
+        forwardKey = KeyCode.Z;
+        backKey = KeyCode.S;
+        rightKey = KeyCode.D;
+        leftKey = KeyCode.Q;
+    }
 
     void Start()
     {
         collectBar = FindObjectOfType<CollectBar>();
+
+        SettingsManager.Instance.OnKeyChanged += UpdateKeys;
+        isInitialized = true;
     }
 
     void Update()
@@ -22,10 +40,39 @@ public class MovePlayer : MonoBehaviour
         Move();
     }
 
+    private void UpdateKeys(KeyCode newForwardKey, KeyCode newBackKey, KeyCode newRightKey, KeyCode newLeftKey, KeyCode newInventoryKey)
+    {
+        forwardKey = newForwardKey;
+        backKey = newBackKey;
+        rightKey = newRightKey;
+        leftKey = newLeftKey;
+    }
+
     private void Move()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
+        if (!isInitialized)
+            return;
+
+        float horizontalInput = 0f;
+        float verticalInput = 0f;
+
+        if (Input.GetKey(forwardKey))
+        {
+            verticalInput = 1f;
+        }
+        else if (Input.GetKey(backKey))
+        {
+            verticalInput = -1f;
+        }
+
+        if (Input.GetKey(rightKey))
+        {
+            horizontalInput = 1f;
+        }
+        else if (Input.GetKey(leftKey))
+        {
+            horizontalInput = -1f;
+        }
 
         Vector3 cameraForward = cameraGameObject.transform.forward;
         cameraForward.y = 0;

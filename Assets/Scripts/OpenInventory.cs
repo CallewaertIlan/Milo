@@ -4,22 +4,36 @@ using UnityEngine;
 
 public class OpenInventory : MonoBehaviour
 {
-    [SerializeField] private Canvas canvas;
-    [SerializeField] private bool isOpen;
+    [SerializeField] private Canvas inventoryCanvas;
+    [SerializeField] private Canvas settingsCanvas;
+    private bool isOpen;
+    private KeyCode inventoryKey;
+
+    private void Awake()
+    {
+        inventoryKey = KeyCode.I;
+    }
 
     void Start()
     {
         isOpen = false;
+        SettingsManager.Instance.OnKeyChanged += UpdateKeys;
     }
 
     void Update()
     {
+        bool settingsOpen = settingsCanvas.enabled;
 
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(inventoryKey) && !settingsOpen)
         {
             InventoryManager.Instance.UpdateInventory();
             isOpen = !isOpen;
-            canvas.enabled = isOpen;
+            inventoryCanvas.enabled = isOpen;
         }
+    }
+
+    private void UpdateKeys(KeyCode newForwardKey, KeyCode newBackKey, KeyCode newRightKey, KeyCode newLeftKey, KeyCode newInventoryKey)
+    {
+        inventoryKey = newInventoryKey;
     }
 }
